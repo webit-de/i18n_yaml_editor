@@ -18,6 +18,14 @@ module I18nYamlEditor
       I18nYamlEditor.app
     end
 
+    def convert_to_right_fromat(old_text, new_text)
+      if old_text == !!old_text # It's a boolean
+        new_text.downcase == "true"
+      else # It's a text
+        new_text
+      end
+    end
+
     define do
       on get, root do
         on param("filters") do |filters|
@@ -41,7 +49,7 @@ module I18nYamlEditor
       on post, "update" do
         if translations = req["translations"]
           translations.each {|name, text|
-            app.store.translations[name].text = text
+            app.store.translations[name].text = convert_to_right_fromat(app.store.translations[name].text, text)
           }
           app.save_translations
         end

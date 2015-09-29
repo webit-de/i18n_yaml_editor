@@ -20,6 +20,9 @@
                 <td class="value">
                   <% if translation.text.nil? || translation.text.is_a?(String) %>
                     <input type="text" name="translations[<%= translation.name %>]" value="<%= Rack::Utils.escape_html translation.text %>" />
+                  <% elsif translation.text == !!translation.text %>
+                    <input type="radio" name="translations[<%= translation.name %>]" value="true" <%= 'checked' if translation.text %>/><label> True</label>
+                    <input type="radio" name="translations[<%= translation.name %>]" value="false" <%= 'checked' unless translation.text %>/><label> False</label>
                   <% else %>
                     [read only]
                     <%= translation.text.class.name %>
