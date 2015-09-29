@@ -33,10 +33,34 @@
       .header h1 {
         margin-right: 2em;
       }
-      
+
       .pull-right {
         float:right;
         padding-right:20px;
+      }
+
+      /* STATS */
+      .content > .stats {
+        padding-left: 0.5em;
+        font-size: 1.2em;
+        border-bottom: 1px solid #bbb;
+      }
+
+      .content > .stats > span {
+        display: inline-block;
+        margin-bottom: 0.5em;
+      }
+
+      .content > .stats > .done {
+        border-bottom: 2px solid #3f3;
+      }
+
+      .content > .stats > .incomplete {
+        border-bottom: 2px solid #f33;
+      }
+
+      .content > .stats > .empty {
+        border-bottom: 2px solid #33f;
       }
 
       /* TRANSLATIONS */
@@ -128,7 +152,7 @@
       <form action="/" method="get">
         <input type="submit" value="Clear" />
       </form>
-      
+
       <div class="pull-right">
       </div>
     </div>
