@@ -23,6 +23,9 @@
                   <% elsif translation.text == !!translation.text %>
                     <input type="radio" name="translations[<%= translation.name %>]" value="true" <%= 'checked' if translation.text %>/><label> True</label>
                     <input type="radio" name="translations[<%= translation.name %>]" value="false" <%= 'checked' unless translation.text %>/><label> False</label>
+                  <% elsif translation.text.is_a?(Array) %>
+                    <% array_string = translation.text.join("\n") %>
+                    <textarea name="translations[<%= translation.name %>]" cols="35" rows="<%= translation.text.count %>"><%= array_string %></textarea>
                   <% else %>
                     [read only]
                     <%= translation.text.class.name %>

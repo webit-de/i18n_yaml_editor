@@ -25,6 +25,8 @@ module I18nYamlEditor
       elsif old_text.is_a?(Numeric) # It's a number
         num = BigDecimal.new(new_text)
         num.frac == 0 ? num.to_i : num.to_f
+      elsif old_text.is_a?(Array) # It's a array
+        new_text.split("\r\n")
       else # It's a text
         new_text
       end
