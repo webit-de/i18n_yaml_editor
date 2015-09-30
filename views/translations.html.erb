@@ -1,3 +1,11 @@
+<div class="stats">
+  stats: {
+  total: <span class=""><%= keys.length %></span>,
+  <span class="done">done: <%= keys.count{|_,key| key.complete? && !key.empty?} %></span>,
+  <span class="incomplete">incomplete: <%= keys.count{|_,key| !key.complete?} %></span>,
+  <span class="empty">empty: <%= keys.count{|_,key| key.empty?} %></span>}
+</div>
+
 <form id="updateform" action="/update" method="post">
   <% filters.each do |filter, value| %>
     <input name="filters[<%= filter %>" type="hidden" value="<%= value %>"/>
