@@ -2,6 +2,7 @@
 
 require "cuba"
 require "cuba/render"
+require 'bigdecimal'
 
 require "i18n_yaml_editor/app"
 
@@ -21,6 +22,9 @@ module I18nYamlEditor
     def convert_to_right_fromat(old_text, new_text)
       if old_text == !!old_text # It's a boolean
         new_text.downcase == "true"
+      elsif old_text.is_a?(Numeric) # It's a number
+        num = BigDecimal.new(new_text)
+        num.frac == 0 ? num.to_i : num.to_f
       else # It's a text
         new_text
       end
