@@ -69,6 +69,12 @@ module I18nYamlEditor
           f.puts output
         end
       }
+
+      %x(
+	git add -A
+        git commit -m "Tolkien #{Time.now} --skip-ci"
+        git push origin translator_de
+      )
     end
   end
 end

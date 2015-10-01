@@ -26,7 +26,8 @@ module I18nYamlEditor
     def add_translation translation
       if existing = self.translations[translation.name]
         message = "#{translation.name} detected in #{translation.file} and #{existing.file}"
-        raise DuplicateTranslationError.new(message)
+        #raise DuplicateTranslationError.new(message)
+        puts message
       end
 
       self.translations[translation.name] = translation

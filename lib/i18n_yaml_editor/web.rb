@@ -52,6 +52,12 @@ module I18nYamlEditor
       on get, "debug" do
         res.write partial("debug.html", translations: app.store.translations.values)
       end
+
+      on get, "restart" do
+        %x(~/restart.sh)
+        sleep 3
+        res.redirect "/"
+      end
     end
   end
 end
