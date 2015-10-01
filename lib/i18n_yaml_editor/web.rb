@@ -19,16 +19,18 @@ module I18nYamlEditor
       I18nYamlEditor.app
     end
 
-    def convert_to_right_fromat(old_text, new_text)
-      if old_text == !!old_text # It's a boolean
-        new_text.downcase == "true"
-      elsif old_text.is_a?(Numeric) # It's a number
-        num = BigDecimal.new(new_text)
+    def cast(klass, value)
+      return '' if value.blank?
+
+      if klass < Numeric
+        num = BigDecimal.new(value)
         num.frac == 0 ? num.to_i : num.to_f
-      elsif old_text.is_a?(Array) # It's a array
-        new_text.split("\r\n")
-      else # It's a text
-        new_text
+      elsif [TrueClass, FalseClass].include?(klass)
+        value.downcase == "true"
+      elsif klass == Array
+        value.split("\r\n")
+      else #String
+        value
       end
     end
 
@@ -54,9 +56,14 @@ module I18nYamlEditor
 
       on post, "update" do
         if translations = req["translations"]
+          store = app.store.translations.values.group_by{|e| e.key}
+
           translations.each {|name, text|
-            app.store.translations[name].text = convert_to_right_fromat(app.store.translations[name].text, text)
+            data_type = store[app.store.translations[name].key].map(&:text).find { |t| t.present? || t == false }.class
+            data_type = String if data_type == NilClass
+            app.store.translations[name].text = cast(data_type, text)
           }
+
           app.save_translations
         end
 
