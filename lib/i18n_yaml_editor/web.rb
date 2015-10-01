@@ -75,8 +75,8 @@ module I18nYamlEditor
       end
 
       on get, "restart" do
-        %x(~/restart.sh)
-        sleep 3
+        system "~/restart.sh"
+        sleep 7
         res.redirect "/"
       end
     end

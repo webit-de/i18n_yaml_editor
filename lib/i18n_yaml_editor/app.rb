@@ -71,7 +71,7 @@ module I18nYamlEditor
       }
 
       %x(
-	git add -A
+	      git add -A
         git commit -m "Tolkien #{Time.now} --skip-ci"
         git push origin translator_de
       )
