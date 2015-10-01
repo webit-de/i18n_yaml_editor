@@ -28,6 +28,7 @@ module I18nYamlEditor
       store.create_missing_keys
 
       $stdout.puts " * Starting web editor at port 5050"
+      Rack::Utils.key_space_limit = 68719476736
       Rack::Server.start :app => Web, :Port => (@port || 5050)
     end
 
