@@ -1,20 +1,25 @@
----
-:da:
-  :session:
-    :new:
-      :email: ! 'E-mail:'
-      :password: ''
-      :login: Log ind
-      :remember_me: Husk mig
-      :forgot: Har du glemt dit kodeord?
-      :v1: Log ind på det gamle Firmafon
-    :create:
-      :logged_in: Velkommen til
-      :invalid_login: Forkert e-mail eller kodeord.
-    :destroy:
-      :logged_out: Logget ud
-      :re_login: Log ind igen.
-  :new:
-    :email: EMAIL
-    :password: pwd
-    :login: log in
+da:
+  numbers:
+    currency: "€"
+    precision: 3
+    separator: ","
+    use_local_format: false
+  session:
+    new:
+      email: 'E-mail:'
+      password: ''
+      login: Log ind
+      remember_me: Husk mig
+      forgot: Har du glemt dit kodeord?
+      v1: Log ind på det gamle Firmafon
+    create:
+      logged_in: Velkommen til
+      invalid_login: Forkert e-mail eller kodeord.
+    destroy:
+      logged_out: Logget ud
+      re_login: Log ind igen.
+
+  new:
+    email: EMAIL
+    password: pwd
+    login: log in

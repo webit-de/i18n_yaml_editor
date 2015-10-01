@@ -9,7 +9,7 @@ YAML files instead of keeping a separate database in sync. This has several bene
   YAML files directly
 * If your YAML files are organized in subfolders, this structure is kept intact
 
-![Translator](https://cloud.githubusercontent.com/assets/2951339/10191908/9e6cd5a8-6778-11e5-8824-f512d394ca25.png)
+![Translator](https://cloud.githubusercontent.com/assets/2951339/10222745/eaf12018-6855-11e5-93a8-ea66774b6e4b.png)
 
 ## Prerequisites
 
