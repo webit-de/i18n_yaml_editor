@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>IYE</title>
+    <title>Translator</title>
     <style>
       /* GENERAL */
       body {
@@ -12,6 +12,7 @@
 
       /* HEADER */
       .header {
+        min-width: 946px;
         margin: 0;
         padding: 1em;
         background-color: #fff;
@@ -32,10 +33,34 @@
       .header h1 {
         margin-right: 2em;
       }
-      
+
       .pull-right {
         float:right;
         padding-right:20px;
+      }
+
+      /* STATS */
+      .content > .stats {
+        padding-left: 0.5em;
+        font-size: 1.2em;
+        border-bottom: 1px solid #bbb;
+      }
+
+      .content > .stats > span {
+        display: inline-block;
+        margin-bottom: 0.5em;
+      }
+
+      .content > .stats > .done {
+        border-bottom: 2px solid #3f3;
+      }
+
+      .content > .stats > .incomplete {
+        border-bottom: 2px solid #f33;
+      }
+
+      .content > .stats > .empty {
+        border-bottom: 2px solid #33f;
       }
 
       /* TRANSLATIONS */
@@ -107,7 +132,7 @@
 
   <body>
     <div class="header">
-      <h1>IYE</h1>
+      <h1>Translator</h1>
 
       <form action="/" method="get">
         <label>
@@ -135,7 +160,7 @@
       <form action="/" method="get">
         <input type="submit" value="Clear" />
       </form>
-      
+
       <div class="pull-right">
       </div>
     </div>

@@ -3,7 +3,7 @@
 require "test_helper"
 require "i18n_yaml_editor/store"
 
-class TestStore < MiniTest::Unit::TestCase
+class TestStore < Minitest::Test
   def test_add_translations
     store = Store.new
     translation = Translation.new(:name => "da.session.login")
@@ -144,7 +144,7 @@ class TestStore < MiniTest::Unit::TestCase
           app_name: "Oversætter"
         }
       }
-    }
+    }.with_indifferent_access
 
     store = Store.new
     store.add_translation Translation.new(name: "da.session.login", text: "Log ind", file: "/tmp/session.da.yml")

@@ -3,7 +3,7 @@
 require "test_helper"
 require "i18n_yaml_editor/transformation"
 
-class TestTransformation < MiniTest::Unit::TestCase
+class TestTransformation < Minitest::Test
   def test_flatten_hash
     input = {
       da: {
@@ -37,7 +37,7 @@ class TestTransformation < MiniTest::Unit::TestCase
       en: {
         session: {login: "Log in", logout: "Log out"}
       }
-    }
+    }.with_indifferent_access
 
     assert_equal expected, Transformation.nest_hash(input)
   end
