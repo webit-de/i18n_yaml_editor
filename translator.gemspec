@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = 'translator'
-  s.version  = '1.1.1'
-  s.date     = '2015-09-30'
+  s.version  = '1.2.1'
+  s.date     = '2015-10-04'
   s.summary  = 'I18n Yaml Editor'
   s.email    = 'wolfgang.teuber@sage.com'
   s.homepage = 'http://github.com/Sage/translator'
