@@ -32,11 +32,15 @@ module I18nYamlEditor
     end
 
     def load_translations
-      files = Dir[@path + "/**/*.yml"]
-      files.each {|file|
-        yaml = YAML.load_file(file)
-        store.from_yaml(yaml, file)
-      }
+      files = File.directory?(@path) ? Dir[@path + '/**/*.yml'] : File.read(@path).split
+      files.each do |file|
+        if File.exist?(file)
+          yaml = YAML.load_file(file)
+          store.from_yaml(yaml, file)
+        else
+          $stderr.puts "File #{file} not found."
+        end
+      end
     end
 
     def save_translations

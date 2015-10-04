@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'translator'
-  s.version  = '1.1.1'
+  s.version  = '1.2.1'
   s.date     = '2015-09-30'
   s.summary  = 'I18n Yaml Editor'
   s.email    = 'wolfgang.teuber@sage.com'
