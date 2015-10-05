@@ -25,11 +25,11 @@ You need to understand a few things about Translator for it to make sense, mainl
         $ git clone git@github.com:Sage/translator.git
         $ cd translator
         $ gem build translator.gemspec
-        $ gem install translator-1.1.1.gem
+        $ gem install translator-1.2.1.gem
 
 2. The `translator` executable is now available, use it wherever you want.
 
-        $ translator path/to/your/i18n/locales [port]
+        $ translator path/to/i18n/locales [port]
 
     At this point Translator loads all translation keys for all locales, and creates any
     keys that might be missing for existing locales, the default port is 5050
