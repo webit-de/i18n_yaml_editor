@@ -76,8 +76,8 @@ module I18nYamlEditor
       }
 
       %x(
-        cd ~/SD/sage_one_advanced && git commit -am "Tolkien #{Time.now} --skip-ci" && git push origin translator_de
-        cd ~/SD/sage_one_gac_de && git commit -am "Tolkien #{Time.now} --skip-ci" && git push origin translator_de
+        cd ~/SD/sage_one_advanced && git add -A && git commit -m "Tolkien #{Time.now} --skip-ci" && git push origin translator_de
+        cd ~/SD/sage_one_gac_de && git add -A && git commit -m "Tolkien #{Time.now} --skip-ci" && git push origin translator_de
       )
     end
   end
