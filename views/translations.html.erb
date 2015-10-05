@@ -93,15 +93,15 @@
   }
 
   for (idx in keygens) {
-    keygens[idx].onsubmit = markChanged;
+    keygens[idx].onchange = markChanged;
   }
 
   for (idx in selects) {
-    selects[idx].onsubmit = markChanged;
+    selects[idx].onchange = markChanged;
   }
 
   for (idx in textareas) {
-    textareas[idx].onsubmit = markChanged;
+    textareas[idx].onchange = markChanged;
   }
 
   updateForm.onsubmit = function () {
