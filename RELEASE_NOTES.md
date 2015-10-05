@@ -1,3 +1,6 @@
+## v1.3.0
+* Support editing arrays and strings or numbers
+
 ## v1.2.2
 * Fix onchange events for keygen, select and textarea
 
