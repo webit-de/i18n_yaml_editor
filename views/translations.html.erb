@@ -8,12 +8,12 @@
 
 <form id="updateform" action="/update" method="post">
   <% filters.each do |filter, value| %>
-    <input name="filters[<%= filter %>" type="hidden" value="<%= value %>"/>
+    <input name="filters[<%= filter %>" type="hidden" value="<%= value %>" class="changed"/>
   <% end %>
 
   <table class="keys" cellspacing="0">
     <% keys.each do |name, key| %>
-      <tr class="translation 
+      <tr class="translation
         <%= "incomplete" unless key.complete? %>
         <%= "empty" if key.empty? %>
         ">
@@ -57,9 +57,63 @@
 
   <p class="pull-right"><input type="submit" id="save" value="Save" /></p>
 </form>
-<script type="text/javascript">
-  $('.header .pull-right').html("<button id='save-on-top'>Save</button>")
-  $('#save-on-top').click(function() {
-    $('#updateform').submit();
-  });
+<script>
+  var updateForm = document.getElementById('updateform'),
+      saveOnTop = document.createElement('button'),
+      idx,
+      changes,
+      submitForm,
+      input,
+      inputs = updateForm.getElementsByTagName('input'),
+      keygens = updateForm.getElementsByTagName('keygen'),
+      selects = updateForm.getElementsByTagName('select'),
+      textareas = updateForm.getElementsByTagName('textarea'),
+      markChanged = function () {
+        if (!(/(?:^|\s)changed(?!\S)/).test(this.className)) {
+          this.className += ' changed';
+        }
+      };
+
+  saveOnTop.innerHTML = 'Save';
+  saveOnTop.onclick = function () { updateForm.onsubmit();};
+  document.getElementById('save-on-top-container').appendChild(saveOnTop);
+
+
+  for (idx in inputs) {
+    input = inputs[idx];
+    if (input.type === 'checkbox' ||
+        input.type === 'file' ||
+        input.type === 'password' ||
+        input.type === 'radio' ||
+        input.type === 'range' ||
+        input.type === 'search' ||
+        input.type === 'text') {
+      input.onchange = markChanged;
+    }
+  }
+
+  for (idx in keygens) {
+    keygens[idx].onsubmit = markChanged;
+  }
+
+  for (idx in selects) {
+    selects[idx].onsubmit = markChanged;
+  }
+
+  for (idx in textareas) {
+    textareas[idx].onsubmit = markChanged;
+  }
+
+  updateForm.onsubmit = function () {
+    submitForm = document.createElement('form');
+    submitForm.action = this.action;
+    submitForm.method = this.method;
+    changes = this.getElementsByClassName('changed');
+    while (changes.length > 0) {
+      submitForm.appendChild(changes[0]);
+    }
+    document.body.appendChild(submitForm);
+    submitForm.submit();
+    return false;
+  };
 </script>
