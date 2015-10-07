@@ -43,8 +43,13 @@ module I18nYamlEditor
       end
     end
 
-    def save_translations
-      files = store.to_yaml
+    def save_translations(translations)
+      files = store.to_yaml.select do |_, i18n_hash|
+        translations.keys.any? do |i18n_key|
+          i18n_key.split('.').inject(i18n_hash){ |hash, k| hash[k] rescue {} }.present?
+        end
+      end
+
       files.each {|file, yaml|
         File.open(file, "w", encoding: "utf-8") do |f|
           # Rails

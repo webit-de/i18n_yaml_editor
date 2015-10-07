@@ -1,3 +1,6 @@
+## v1.3.1
+* Only save files that contain the changed i18n key
+
 ## v1.3.0
 * Support editing arrays and strings or numbers
 
