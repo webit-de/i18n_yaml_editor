@@ -75,7 +75,7 @@ module I18nYamlEditor
             end
           }
 
-          app.save_translations
+          app.save_translations(translations)
         end
 
         res.redirect "/?#{Rack::Utils.build_nested_query(filters: req["filters"])}"
