@@ -1,3 +1,5 @@
+* Add favicon "globe"
+
 ## v1.3.1
 * Only save files that contain the changed i18n key
 
