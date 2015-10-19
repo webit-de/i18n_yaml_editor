@@ -63,7 +63,7 @@ module I18nYamlEditor
             data_type = obj.class
             data_type = String if data_type == NilClass
             if data_type == Array
-              klasses = obj.map(&:class).uniq!
+              klasses = obj.map(&:class).uniq
               if klasses.length < 2
                 app.store.translations[name].text = []
                 cast(data_type, text).each do |item|
