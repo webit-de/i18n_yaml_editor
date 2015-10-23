@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.email    = 'wolfgang.teuber@sage.com'
   s.homepage = 'http://github.com/Sage/translator'
   s.description = 'I18n YAML Editor'
-  s.authors  = ['Harry Vangberg', 'Wolfgang Teuber']
+  s.authors = ['Harry Vangberg', 'Wolfgang Teuber']
   s.executables << 'translator'
-  s.files    = [
+  s.files = [
     'README.md',
     'Rakefile',
     'translator.gemspec',

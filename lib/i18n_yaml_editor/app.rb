@@ -1,13 +1,13 @@
 # encoding: utf-8
 
-require "psych"
-require "yaml"
+require 'psych'
+require 'yaml'
 require 'active_support/all'
 
-require "i18n_yaml_editor"
-require "i18n_yaml_editor/web"
-require "i18n_yaml_editor/store"
-require "i18n_yaml_editor/core_ext"
+require 'i18n_yaml_editor'
+require 'i18n_yaml_editor/web'
+require 'i18n_yaml_editor/store'
+require 'i18n_yaml_editor/core_ext'
 
 module I18nYamlEditor
   class App
@@ -24,11 +24,11 @@ module I18nYamlEditor
       $stdout.puts " * Loading translations from #{@path}"
       load_translations
 
-      $stdout.puts " * Creating missing translations"
+      $stdout.puts ' * Creating missing translations'
       store.create_missing_keys
 
-      $stdout.puts " * Starting web editor at port 5050"
-      Rack::Server.start :app => Web, :Port => (@port || 5050)
+      $stdout.puts ' * Starting web editor at port 5050'
+      Rack::Server.start app: Web, Port: (@port || 5050)
     end
 
     def load_translations
@@ -46,12 +46,18 @@ module I18nYamlEditor
     def save_translations(translations)
       files = store.to_yaml.select do |_, i18n_hash|
         translations.keys.any? do |i18n_key|
-          i18n_key.split('.').inject(i18n_hash){ |hash, k| hash[k] rescue {} }.present?
+          i18n_key.split('.').inject(i18n_hash) do |hash, k|
+            begin
+                                                             hash[k]
+                                                           rescue
+                                                             {}
+                                                           end
+          end.present?
         end
       end
 
-      files.each {|file, yaml|
-        File.open(file, "w", encoding: "utf-8") do |f|
+      files.each do|file, yaml|
+        File.open(file, 'w', encoding: 'utf-8') do |f|
           # Rails
           # I18n.backend.load_translations
           # default_locale_translations = I18n.backend.send(:translations)[locale].with_indifferent_access.to_hash_recursive
@@ -60,15 +66,15 @@ module I18nYamlEditor
           # sort alphabetically:
           # i18n_yaml = yaml.with_indifferent_access.to_hash_recursive.sort_by_key(true).to_yaml
           i18n_yaml = yaml.with_indifferent_access.to_hash_recursive.to_yaml
-          process = i18n_yaml.split(/\n/).reject{|e| e == ''}[1..-1]  # remove "---" from first line in yaml
+          process = i18n_yaml.split(/\n/).reject { |e| e == '' }[1..-1] # remove "---" from first line in yaml
 
           # add an empty line if yaml tree level changes by 2 or more
           tmp_ary = []
           process.each_with_index do |line, idx|
             tmp_ary << line
-            unless process[idx+1].nil?
+            unless process[idx + 1].nil?
               this_line_spcs = line.match(/\A\s*/)[0].length
-              next_line_spcs = process[idx+1].match(/\A\s*/)[0].length
+              next_line_spcs = process[idx + 1].match(/\A\s*/)[0].length
               tmp_ary << '' if next_line_spcs - this_line_spcs < -2
             end
           end
@@ -77,7 +83,7 @@ module I18nYamlEditor
 
           f.puts output
         end
-      }
+      end
     end
   end
 end

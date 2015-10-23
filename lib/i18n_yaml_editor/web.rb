@@ -1,17 +1,17 @@
 # encoding: utf-8
 
-require "cuba"
-require "cuba/render"
+require 'cuba'
+require 'cuba/render'
 require 'bigdecimal'
 
-require "i18n_yaml_editor/app"
+require 'i18n_yaml_editor/app'
 
 module I18nYamlEditor
   class Web < Cuba
     plugin Cuba::Render
 
-    settings[:render][:template_engine] = "erb"
-    settings[:render][:views] = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "views"))
+    settings[:render][:template_engine] = 'erb'
+    settings[:render][:views] = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'views'))
 
     use Rack::ShowExceptions
 
@@ -26,37 +26,37 @@ module I18nYamlEditor
         num = BigDecimal.new(value)
         num.frac == 0 ? num.to_i : num.to_f
       elsif [TrueClass, FalseClass].include?(klass)
-        value.downcase == "true"
+        value.downcase == 'true'
       elsif klass == Array
         value.split("\r\n")
-      else #String
+      else # String
         value
       end
     end
 
     define do
       on get, root do
-        on param("filters") do |filters|
+        on param('filters') do |filters|
           options = {}
-          options[:key] = /#{filters["key"]}/ if filters["key"].to_s.size > 0
-          options[:text] = /#{filters["text"]}/i if filters["text"].to_s.size > 0
-          options[:complete] = false if filters["incomplete"] == "on"
-          options[:empty] = true if filters["empty"] == "on"
+          options[:key] = /#{filters["key"]}/ if filters['key'].to_s.size > 0
+          options[:text] = /#{filters["text"]}/i if filters['text'].to_s.size > 0
+          options[:complete] = false if filters['incomplete'] == 'on'
+          options[:empty] = true if filters['empty'] == 'on'
 
           keys = app.store.filter_keys(options)
 
-          res.write view("translations.html", keys: keys, filters: filters)
+          res.write view('translations.html', keys: keys, filters: filters)
         end
 
         on default do
           categories = app.store.categories.sort
-          res.write view("categories.html", categories: categories, filters: {})
+          res.write view('categories.html', categories: categories, filters: {})
         end
       end
 
-      on post, "update" do
-        if translations = req["translations"]
-          store = app.store.translations.values.group_by{|e| e.key}
+      on post, 'update' do
+        if translations = req['translations']
+          store = app.store.translations.values.group_by(&:key)
 
           translations.each {|name, text|
             obj = store[app.store.translations[name].key].map(&:text).find { |t| t.present? || t == false }
@@ -78,11 +78,11 @@ module I18nYamlEditor
           app.save_translations(translations)
         end
 
-        res.redirect "/?#{Rack::Utils.build_nested_query(filters: req["filters"])}"
+        res.redirect "/?#{Rack::Utils.build_nested_query(filters: req['filters'])}"
       end
 
-      on get, "debug" do
-        res.write partial("debug.html", translations: app.store.translations.values)
+      on get, 'debug' do
+        res.write partial('debug.html', translations: app.store.translations.values)
       end
     end
   end
