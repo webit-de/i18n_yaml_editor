@@ -1,3 +1,4 @@
+# Translator
 module I18nYamlEditor
   class << self
     attr_accessor :app

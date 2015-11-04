@@ -11,6 +11,7 @@ require 'i18n_yaml_editor/translation'
 module I18nYamlEditor
   class DuplicateTranslationError < StandardError; end
 
+  # Store keeps all i18n data
   class Store
     include Transformation
 
@@ -24,18 +25,22 @@ module I18nYamlEditor
     end
 
     def add_translation(translation)
-      if existing = translations[translation.name]
-        message = "#{translation.name} detected in #{translation.file} and #{existing.file}"
-        fail DuplicateTranslationError.new(message)
-      end
+      check_duplication! translation
 
       translations[translation.name] = translation
 
-      add_locale(translation.locale)
+      locales.add(translation.locale)
+      key = init_key(translation)
+      init_category(key)
+    end
 
+    def init_key(translation)
       key = (keys[translation.key] ||= Key.new(name: translation.key))
       key.add_translation(translation)
+      key
+    end
 
+    def init_category(key)
       category = (categories[key.category] ||= Category.new(name: key.category))
       category.add_key(key)
     end
@@ -44,26 +49,9 @@ module I18nYamlEditor
       keys[key.name] = key
     end
 
-    def add_locale(locale)
-      locales.add(locale)
-    end
-
     def filter_keys(options = {})
-      filters = []
-      filters << ->(k) { k.name =~ options[:key] } if options.key?(:key)
-      if options.key?(:complete)
-        filters << ->(k) { k.complete? == options[:complete] }
-      end
-      filters << ->(k) { k.empty? == options[:empty] } if options.key?(:empty)
-      if options.key?(:text)
-        filters << lambda do|k|
-          k.translations.any? { |t| t.text =~ options[:text] }
-        end
-      end
-
-      keys.select do|_name, key|
-        filters.all? { |filter| filter.call(key) }
-      end
+      filters = filters(options)
+      keys.select { |_, key| filters.all? { |filter| filter.call(key) } }
     end
 
     def create_missing_keys
@@ -71,18 +59,9 @@ module I18nYamlEditor
         missing_locales = locales - key.translations.map(&:locale)
         missing_locales.each do|locale|
           translation = key.translations.first
-
-          # this just replaces the locale part of the file name. should
-          # be possible to do in a simpler way. gsub, baby.
-          path = Pathname.new(translation.file)
-          dirs, file = path.split
-          file = file.to_s.split('.')
-          file[-2] = locale
-          file = file.join('.')
-          path = dirs.join(file).to_s
-
-          new_translation = Translation.new(name: "#{locale}.#{key.name}", file: path)
-          add_translation(new_translation)
+          name = "#{locale}.#{key.name}"
+          path = translation_path locale, translation
+          add_translation(Translation.new(name: name, file: path))
         end
       end
     end
@@ -106,6 +85,55 @@ module I18nYamlEditor
         result[file] = nest_hash(file_result)
       end
       result
+    end
+
+    private
+
+    def translation_path(locale, translation)
+      # this just replaces the locale part of the file name. should
+      # be possible to do in a simpler way. gsub, baby.
+      path = Pathname.new(translation.file)
+      dirs, file = path.split
+      file = file.to_s.split('.')
+      file[-2] = locale
+      file = file.join('.')
+      dirs.join(file).to_s
+    end
+
+    def filters(options)
+      list = []
+      list << key_filter(options) if options.key?(:key)
+      list << complete_filter(options) if options.key?(:complete)
+      list << empty_filter(options) if options.key?(:empty)
+      list << text_filter(options) if options.key?(:text)
+      list
+    end
+
+    def key_filter(options)
+      ->(k) { k.name =~ options[:key] }
+    end
+
+    def complete_filter(options)
+      ->(k) { k.complete? == options[:complete] }
+    end
+
+    def text_filter(options)
+      ->(k) { k.translations.any? { |t| t.text =~ options[:text] } }
+    end
+
+    def empty_filter(options)
+      ->(k) { k.empty? == options[:empty] }
+    end
+
+    def check_duplication!(translation)
+      existing = translations[translation.name]
+      return unless existing
+      error_message = error_message(translation, existing)
+      fail DuplicateTranslationError, error_message
+    end
+
+    def error_message(translation, existing)
+      "#{translation.name} detected in #{translation.file} and #{existing.file}"
     end
   end
 end

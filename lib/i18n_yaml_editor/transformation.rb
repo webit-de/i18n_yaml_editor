@@ -3,6 +3,7 @@
 module I18nYamlEditor
   class TransformationError < StandardError; end
 
+  # Transformation is lib code
   module Transformation
     def flatten_hash(hash, namespace = [], tree = {})
       hash.each do|key, value|
@@ -19,23 +20,33 @@ module I18nYamlEditor
 
     def nest_hash(hash)
       result = {}
-      hash.each do|key, value|
+      hash.each do |key, value|
         begin
-          sub_result = result
-          keys = key.split('.')
-          keys.each_with_index do|k, idx|
-            if keys.size - 1 == idx
-              sub_result[k] = value
-            else
-              sub_result = (sub_result[k] ||= {})
-            end
-          end
-        rescue => e
-          raise TransformationError.new("Failed to nest key: #{key.inspect} with value: #{value.inspect}")
+          foo result, key, value
+        rescue
+          raise TransformationError,
+                "Failed to nest key: #{key.inspect} with #{value.inspect}"
         end
       end
       result
     end
+
     module_function :nest_hash
+
+    private
+
+    def foo(result, key, value)
+      sub_result = result
+      keys = key.split('.')
+      keys.each_with_index do |k, idx|
+        if keys.size - 1 == idx
+          sub_result[k] = value
+        else
+          sub_result = (sub_result[k] ||= {})
+        end
+      end
+    end
+
+    module_function :foo
   end
 end

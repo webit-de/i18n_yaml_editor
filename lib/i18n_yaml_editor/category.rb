@@ -3,6 +3,7 @@
 require 'set'
 
 module I18nYamlEditor
+  # This is a category
   class Category
     attr_accessor :name, :keys
 

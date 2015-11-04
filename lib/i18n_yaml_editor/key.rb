@@ -3,6 +3,7 @@
 require 'set'
 
 module I18nYamlEditor
+  # This is a key
   class Key
     attr_accessor :name, :translations
 

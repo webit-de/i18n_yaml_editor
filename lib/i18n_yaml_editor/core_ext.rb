@@ -1,3 +1,4 @@
+# Add to_hash_recursive and sort_by_key to Hash
 class Hash
   def to_hash_recursive
     result = to_hash
@@ -15,16 +16,16 @@ class Hash
   end
 
   def sort_by_key(recursive = false, &block)
-    keys.sort(&block).reduce({}) do |seed, key|
+    keys.sort(&block).each_with_object({}) do |seed, key|
       seed[key] = self[key]
       if recursive && seed[key].is_a?(Hash)
         seed[key] = seed[key].sort_by_key(true, &block)
       end
-      seed
     end
   end
 end
 
+# Add to_hash_recursive to Array
 class Array
   def to_hash_recursive
     result = self
