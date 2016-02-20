@@ -1,9 +1,9 @@
-$:.unshift("lib")
+$LOAD_PATH.unshift('lib')
 
-require "i18n_yaml_editor/app"
-require "i18n_yaml_editor/web"
+require 'i18n_yaml_editor/app'
+require 'i18n_yaml_editor/web'
 
-app = I18nYamlEditor::App.new("example")
+app = I18nYamlEditor::App.new('example')
 app.load_translations
 app.store.create_missing_keys
 

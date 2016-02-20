@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.email    = 'wolfgang.teuber@sage.com'
   s.homepage = 'http://github.com/Sage/translator'
   s.description = 'I18n YAML Editor'
-  s.authors  = ['Harry Vangberg', 'Wolfgang Teuber']
+  s.authors = ['Harry Vangberg', 'Wolfgang Teuber']
   s.executables << 'translator'
-  s.files    = [
+  s.files = [
     'README.md',
     'Rakefile',
     'translator.gemspec',
@@ -35,10 +35,11 @@ Gem::Specification.new do |s|
     'test/unit/test_transformation.rb',
     'test/unit/test_translation.rb'
   ]
-  s.add_dependency 'activesupport'
+  s.add_dependency 'activesupport', '>= 4.0.2'
   s.add_dependency 'cuba', '>= 3'
   s.add_dependency 'tilt', '>= 1.3'
   s.add_dependency 'psych', '>= 1.3.4'
 
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'pry-byebug'
 end

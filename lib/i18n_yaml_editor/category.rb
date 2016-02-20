@@ -1,22 +1,23 @@
 # encoding: utf-8
 
-require "set"
+require 'set'
 
 module I18nYamlEditor
+  # This is a category
   class Category
     attr_accessor :name, :keys
 
-    def initialize attributes={}
+    def initialize(attributes = {})
       @name = attributes[:name]
       @keys = Set.new
     end
 
-    def add_key key
-      self.keys.add(key)
+    def add_key(key)
+      keys.add(key)
     end
 
     def complete?
-      self.keys.all? {|key| key.complete?}
+      keys.all?(&:complete?)
     end
   end
 end

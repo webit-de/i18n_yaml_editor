@@ -1,6 +1,8 @@
-require "minitest/autorun"
-require "i18n_yaml_editor"
+require 'minitest/autorun'
+require 'i18n_yaml_editor'
 
-class Minitest::Test
-  include I18nYamlEditor
+module Minitest
+  class Test
+    include I18nYamlEditor
+  end
 end
