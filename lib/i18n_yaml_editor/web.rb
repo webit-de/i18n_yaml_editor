@@ -22,8 +22,6 @@ module I18nYamlEditor
     end
 
     def cast(klass, value)
-      return '' if value.blank?
-
       if klass < Numeric
         num = BigDecimal.new(value)
         num.frac == 0 ? num.to_i : num.to_f
@@ -31,6 +29,8 @@ module I18nYamlEditor
         value.casecmp('true').zero?
       elsif klass == Array
         value.split("\r\n")
+      else # String, blank
+        value.to_s
       end
     end
 
