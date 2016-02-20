@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
     'test/unit/test_transformation.rb',
     'test/unit/test_translation.rb'
   ]
-  s.add_dependency 'activesupport'
+  s.add_dependency 'activesupport', '>= 4.0.2'
   s.add_dependency 'cuba', '>= 3'
   s.add_dependency 'tilt', '>= 1.3'
   s.add_dependency 'psych', '>= 1.3.4'

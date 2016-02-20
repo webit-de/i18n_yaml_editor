@@ -74,9 +74,9 @@ module I18nYamlEditor
     end
 
     def normalize(yaml)
-      i18n_yaml = yaml.with_indifferent_access.to_hash_recursive.to_yaml
       process = i18n_yaml.split(/\n/).reject { |e| e == '' }[1..-1]
       new_line_after_2_indents(process) * "\n"
+      i18n_yaml = yaml.with_indifferent_access.to_hash.to_yaml
     end
 
     def new_line_after_2_indents(process)
