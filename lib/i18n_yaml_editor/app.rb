@@ -10,7 +10,10 @@ require 'i18n_yaml_editor/store'
 require 'i18n_yaml_editor/core_ext'
 
 module I18nYamlEditor
-  # the App
+  # App provides Translator's top-level functionality:
+  #   * Starting Translator
+  #   * Loading Translation files
+  #   * Saving Translation files
   class App
     def initialize(path, port = 5050)
       @path = File.expand_path(path)
@@ -46,14 +49,16 @@ module I18nYamlEditor
     end
 
     def save_translations(translations)
-      files = files(translations: translations)
+      changes = files(translations: translations)
 
-      files.each do|file, yaml|
+      changes.each do|file, yaml|
         File.open(file, 'w', encoding: 'utf-8') do |f|
           f.puts normalize(yaml)
         end
       end
     end
+
+    private
 
     def files(translations: {})
       store.to_yaml.select do |_, i18n_hash|
@@ -74,25 +79,25 @@ module I18nYamlEditor
     end
 
     def normalize(yaml)
-      process = i18n_yaml.split(/\n/).reject { |e| e == '' }[1..-1]
-      new_line_after_2_indents(process) * "\n"
       i18n_yaml = yaml.with_indifferent_access.to_hash.to_yaml
+      i18n_yaml_lines = i18n_yaml.split(/\n/).reject { |e| e == '' }[1..-1]
+      normalize_empty_lines(i18n_yaml_lines) * "\n"
     end
 
-    def new_line_after_2_indents(process)
+    def normalize_empty_lines(i18n_yaml_lines)
       yaml_ary = []
-      process.each_with_index do |line, idx|
+      i18n_yaml_lines.each_with_index do |line, idx|
         yaml_ary << line
-        foo(yaml_ary, process, line, idx)
+        yaml_ary << '' if add_empty_line?(i18n_yaml_lines, line, idx)
       end
       yaml_ary
     end
 
-    def foo(yaml_ary, process, line, idx)
+    def add_empty_line?(process, line, idx)
       return if process[idx + 1].nil?
       this_line_spcs = line[/\A\s*/].length
       next_line_spcs = process[idx + 1][/\A\s*/].length
-      yaml_ary << '' if this_line_spcs - next_line_spcs > 2
+      this_line_spcs - next_line_spcs > 2
     end
   end
 end
