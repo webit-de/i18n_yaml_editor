@@ -1,4 +1,4 @@
-# Extend Hash
+# Extend Hash with sort_by_key method
 class Hash
   # Sorts entries alphabetically by key
   def sort_by_key(recursive = false, &block)
