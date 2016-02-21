@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'minitest/autorun'
 require 'i18n_yaml_editor'
 
