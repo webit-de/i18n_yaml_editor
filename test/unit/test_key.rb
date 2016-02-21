@@ -36,7 +36,7 @@ class TestKey < Minitest::Test
     assert_equal false, key.complete?
   end
 
-  def testemptycomplete_with_no_texts
+  def test_emptycomplete_with_no_texts
     key = Key.new(name: 'session.login')
     key.add_translation Translation.new(name: 'da.session.login')
     key.add_translation Translation.new(name: 'en.session.login')
