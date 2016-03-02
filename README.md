@@ -2,7 +2,8 @@
 
 Translator is based on [IYE](https://github.com/firmafon/iye).
 Translator makes it easy to translate your Rails I18N files and keep them up to date.
-YAML files instead of keeping a separate database in sync. This has several benefits:
+It uses YAML files directly, so you don't need to keep a separate database in sync.
+This has several benefits:
 
 * Branching and diffing is trivial
 * It does not alter the workflow for developers etc., whom can continue editing the
