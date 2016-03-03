@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'psych'
 require 'yaml'
 require 'active_support/all'
