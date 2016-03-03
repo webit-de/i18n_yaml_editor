@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'set'
 require 'pathname'
 
@@ -55,9 +53,9 @@ module I18nYamlEditor
     end
 
     def create_missing_keys
-      keys.each do|_name, key|
+      keys.each do |_name, key|
         missing_locales = locales - key.translations.map(&:locale)
-        missing_locales.each do|locale|
+        missing_locales.each do |locale|
           translation = key.translations.first
           name = "#{locale}.#{key.name}"
           path = translation_path locale, translation
@@ -68,7 +66,7 @@ module I18nYamlEditor
 
     def from_yaml(yaml, file = nil)
       translations = flatten_hash(yaml)
-      translations.each do|name, text|
+      translations.each do |name, text|
         translation = Translation.new(name: name, text: text, file: file)
         add_translation(translation)
       end
@@ -77,9 +75,9 @@ module I18nYamlEditor
     def to_yaml
       result = {}
       files = translations.values.group_by(&:file)
-      files.each do|file, translations|
+      files.each do |file, translations|
         file_result = {}
-        translations.each do|translation|
+        translations.each do |translation|
           file_result[translation.name] = translation.text
         end
         result[file] = nest_hash(file_result)
@@ -129,7 +127,7 @@ module I18nYamlEditor
       existing = translations[translation.name]
       return unless existing
       error_message = error_message(translation, existing)
-      fail DuplicateTranslationError, error_message
+      raise DuplicateTranslationError, error_message
     end
 
     def error_message(translation, existing)

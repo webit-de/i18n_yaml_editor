@@ -1,3 +1,6 @@
+require 'test_helper'
+require 'i18n_yaml_editor/store'
+
 module TestStoreData
   def init_test_store_1
     store = I18nYamlEditor::Store.new

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module I18nYamlEditor
   # A Translation holds information about its name, file and text
   class Translation

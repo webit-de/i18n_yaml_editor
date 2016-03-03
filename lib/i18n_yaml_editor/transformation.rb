@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module I18nYamlEditor
   class TransformationError < StandardError; end
 
@@ -18,7 +16,7 @@ module I18nYamlEditor
     #
     # Returns the generated Hash.
     def flatten_hash(hash, namespace = [], tree = {})
-      hash.each do|key, value|
+      hash.each do |key, value|
         child_ns = namespace.dup << key
         if value.is_a?(Hash)
           flatten_hash value, child_ns, tree

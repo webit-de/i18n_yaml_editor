@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'test_helper'
 require 'i18n_yaml_editor/transformation'
 
@@ -35,5 +33,11 @@ class TestTransformation < Minitest::Test
     }.with_indifferent_access
 
     assert_equal expected, Transformation.nest_hash(I18N_HASH)
+  end
+
+  def test_nest_hash_transformation_error
+    assert_raises(I18nYamlEditor::TransformationError) do
+      I18nYamlEditor::Transformation.nest_hash(error: 'value')
+    end
   end
 end

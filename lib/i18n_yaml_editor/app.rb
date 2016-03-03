@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'psych'
 require 'yaml'
 require 'active_support/all'
@@ -51,7 +49,7 @@ module I18nYamlEditor
     def save_translations(translations)
       changes = files(translations: translations)
 
-      changes.each do|file, yaml|
+      changes.each do |file, yaml|
         File.open(file, 'w', encoding: 'utf-8') do |f|
           f.puts normalize(yaml)
         end
