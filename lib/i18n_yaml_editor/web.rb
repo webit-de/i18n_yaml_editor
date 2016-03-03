@@ -38,8 +38,8 @@ module I18nYamlEditor
       on get, root do
         on param('filters') do |filters|
           opts = {}
-          opts[:key] = /#{filters["key"]}/ if filters['key'].to_s.size > 0
-          opts[:text] = /#{filters["text"]}/i if filters['text'].to_s.size > 0
+          opts[:key] = /#{filters["key"]}/ unless filters['key'].to_s.empty?
+          opts[:text] = /#{filters["text"]}/i unless filters['text'].to_s.empty?
           opts[:complete] = false if filters['incomplete'] == 'on'
           opts[:empty] = true if filters['empty'] == 'on'
 
