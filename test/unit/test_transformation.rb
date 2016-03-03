@@ -34,4 +34,10 @@ class TestTransformation < Minitest::Test
 
     assert_equal expected, Transformation.nest_hash(I18N_HASH)
   end
+
+  def test_nest_hash_transformation_error
+    assert_raises (I18nYamlEditor::TransformationError) do
+      I18nYamlEditor::Transformation.nest_hash({:error => 'value'})
+    end
+  end
 end
