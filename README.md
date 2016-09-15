@@ -1,4 +1,4 @@
-# Translator [![Build Status](https://travis-ci.org/Sage/translator.svg?branch=master)](https://travis-ci.org/Sage/translator) [![Code Climate](https://codeclimate.com/github/Sage/translator/badges/gpa.svg)](https://codeclimate.com/github/Sage/translator) [![Coverage Status](https://coveralls.io/repos/github/Sage/translator/badge.svg?branch=master)](https://coveralls.io/github/Sage/translator?branch=master) [![Documentation Status](http://inch-ci.org/github/Sage/translator.svg?branch=master)](http://inch-ci.org/github/Sage/translator) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Sage/translator/blob/master/LICENSE)
+# Translator [![Build Status](https://travis-ci.org/Sage/translator.svg?branch=master)](https://travis-ci.org/Sage/translator) [![Code Climate](https://codeclimate.com/github/Sage/translator/badges/gpa.svg)](https://codeclimate.com/github/Sage/translator) [![Coverage Status](https://coveralls.io/repos/github/Sage/translator/badge.svg?branch=master)](https://coveralls.io/github/Sage/translator?branch=master) [![Documentation Status](http://inch-ci.org/github/Sage/translator.svg?branch=master)](http://inch-ci.org/github/Sage/translator) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Sage/translator/blob/master/LICENSE) [![Dependency Status](https://gemnasium.com/badges/github.com/Sage/translator.svg)](https://gemnasium.com/github.com/Sage/translator)
 
 Translator is based on [IYE](https://github.com/firmafon/iye).
 Translator makes it easy to translate your Rails I18N files and keep them up to date.
@@ -39,3 +39,9 @@ You need to understand a few things about Translator for it to make sense, mainl
 4. Make changes and press 'Save' - each time you do this, all the keys will be
    written to their original YAML files.
 5. Review your changes before committing files, e.g. by using `git diff`.
+
+## Development
+
+Run tests including coverage. This full test suite runs in less than 2s.
+
+        COVERALLS_RUN_LOCALLY=true bundle exec rake test

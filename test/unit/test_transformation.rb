@@ -36,8 +36,8 @@ class TestTransformation < Minitest::Test
   end
 
   def test_nest_hash_transformation_error
-    assert_raises(I18nYamlEditor::TransformationError) do
-      I18nYamlEditor::Transformation.nest_hash(error: 'value')
+    assert_raises(TransformationError) do
+      Transformation.nest_hash(error: 'value')
     end
   end
 end
