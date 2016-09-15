@@ -39,3 +39,9 @@ You need to understand a few things about Translator for it to make sense, mainl
 4. Make changes and press 'Save' - each time you do this, all the keys will be
    written to their original YAML files.
 5. Review your changes before committing files, e.g. by using `git diff`.
+
+## Development
+
+Run tests including coverage. This full test suite runs in less than 2s.
+
+        COVERALLS_RUN_LOCALLY=true bundle exec rake test
