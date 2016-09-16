@@ -1,5 +1,12 @@
-require 'coveralls'
-Coveralls.wear!
+if ENV['SIMPLE_COV']
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter '/test'
+  end
+else
+  require 'coveralls'
+  Coveralls.wear!
+end
 
 require 'minitest/autorun'
 require 'minitest/hell'

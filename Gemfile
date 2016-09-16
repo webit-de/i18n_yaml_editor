@@ -1,9 +1,5 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
-gemspec
+ruby '2.3.1'
 
-gem 'rubocop', require: false
-gem 'cane', require: false
-gem 'flay', require: false
-gem 'flog', require: false
-gem 'inch', require: false
-gem 'coveralls', require: false
+gemspec
