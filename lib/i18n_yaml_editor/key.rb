@@ -11,10 +11,12 @@ module I18nYamlEditor
       @translations = Set.new
     end
 
+    # Adds a translation to this key's list of translations
     def add_translation(translation)
       translations.add(translation)
     end
 
+    # This key's category
     def category
       @category ||= name.split('.').first
     end

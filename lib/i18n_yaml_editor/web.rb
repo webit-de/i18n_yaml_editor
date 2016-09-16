@@ -8,7 +8,7 @@ require 'bigdecimal'
 require 'i18n_yaml_editor/app'
 
 module I18nYamlEditor
-  # my doc
+  # The frontend rendering engine
   class Web < Cuba
     plugin Cuba::Render
 
@@ -18,10 +18,12 @@ module I18nYamlEditor
 
     use Rack::ShowExceptions
 
+    # Reads global App instance
     def app
       I18nYamlEditor.app
     end
 
+    # Converts a given value to a specific data type
     def cast(klass, value)
       if klass < Numeric
         num = BigDecimal.new(value)

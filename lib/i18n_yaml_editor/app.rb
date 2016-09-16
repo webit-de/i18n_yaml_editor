@@ -23,6 +23,7 @@ module I18nYamlEditor
 
     attr_accessor :store
 
+    # Starts Translator server
     def start
       $stdout.puts " * Loading translations from #{@path}"
       load_translations
@@ -34,6 +35,7 @@ module I18nYamlEditor
       Rack::Server.start app: Web, Port: @port
     end
 
+    # Loads translations from a given path
     def load_translations
       default_files = Dir[@path + '/**/*.yml']
       files = File.directory?(@path) ? default_files : File.read(@path).split
@@ -47,6 +49,7 @@ module I18nYamlEditor
       end
     end
 
+    # Write the given translations to the appropriate YAML file
     def save_translations(translations)
       changes = files(translations: translations)
 

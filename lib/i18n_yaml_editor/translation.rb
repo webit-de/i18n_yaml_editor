@@ -8,10 +8,12 @@ module I18nYamlEditor
       @name, @file, @text = attributes.values_at(:name, :file, :text)
     end
 
+    # This translation's key
     def key
       @key ||= name.split('.')[1..-1].join('.')
     end
 
+    # This translation's locale
     def locale
       @locale ||= name.split('.').first
     end

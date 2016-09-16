@@ -8,6 +8,7 @@ require 'i18n_yaml_editor/key'
 require 'i18n_yaml_editor/translation'
 
 module I18nYamlEditor
+  # Raised when translation entries have the same key
   class DuplicateTranslationError < StandardError; end
 
   # Store keeps all i18n data
@@ -23,6 +24,7 @@ module I18nYamlEditor
       @locales = Set.new
     end
 
+    # Adds a given translation to the store
     def add_translation(translation)
       check_duplication! translation
 
@@ -33,26 +35,32 @@ module I18nYamlEditor
       init_category(key)
     end
 
+    # Generates a new key with the given translation
     def init_key(translation)
       key = (keys[translation.key] ||= Key.new(name: translation.key))
       key.add_translation(translation)
       key
     end
 
+    # Generates a new category with the given key
     def init_category(key)
       category = (categories[key.category] ||= Category.new(name: key.category))
       category.add_key(key)
     end
 
+    # Adds a key to this store
     def add_key(key)
       keys[key.name] = key
     end
 
+    # Selects keys from this store according to the given filter options
     def filter_keys(options = {})
       filters = filters(options)
       keys.select { |_, key| filters.all? { |filter| filter.call(key) } }
     end
 
+    # Creates all keys for each locale that doesn't have all keys from all
+    # other locales
     def create_missing_keys
       keys.each do |_name, key|
         missing_locales = locales - key.translations.map(&:locale)
@@ -65,6 +73,7 @@ module I18nYamlEditor
       end
     end
 
+    # Adds a translation for every entry in a given yaml hash
     def from_yaml(yaml, file = nil)
       translations = flatten_hash(yaml)
       translations.each do |name, text|
@@ -73,6 +82,7 @@ module I18nYamlEditor
       end
     end
 
+    # Returns a hash with the structure of a i18n
     def to_yaml
       result = {}
       files = translations.values.group_by(&:file)

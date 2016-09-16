@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 module I18nYamlEditor
+  # Raised when nesting of I18n keys to a Hash fails
   class TransformationError < StandardError; end
 
   # Transformation provides
@@ -55,6 +56,8 @@ module I18nYamlEditor
 
     private
 
+    # Recursively nests point-separated keys from a string in a hash and
+    # assigns the given value to this new hash entry
     def nest_key(result, key, value)
       sub_result = result
       keys = key.split('.')
