@@ -52,4 +52,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-rubocop'
   s.add_development_dependency 'guard-minitest'
+  s.add_development_dependency 'yard'
+  s.add_development_dependency 'redcarpet'
+  s.add_development_dependency 'github-markup'
 end

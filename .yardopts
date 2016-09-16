@@ -1,0 +1,11 @@
+--title 'File Storage Service Documentation'
+--no-private
+--readme README.md
+--markup-provider=redcarpet
+--markup=markdown
+--output-dir ./doc
+--one-file
+lib/**/*.rb
+-
+RELEASE_NOTES.md
+LICENSE
