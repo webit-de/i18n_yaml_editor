@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module I18nYamlEditor
   # A Translation holds information about its name, file and text
   class Translation

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 $LOAD_PATH.unshift('lib')
 
 require 'i18n_yaml_editor/app'

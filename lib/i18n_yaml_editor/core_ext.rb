@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Extend Hash with sort_by_key method
 class Hash
   # Sorts entries alphabetically by key
