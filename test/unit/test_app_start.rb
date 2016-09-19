@@ -18,7 +18,7 @@ class TestApp < Minitest::Test
       file = dir + '/does_not_exist.yml'
       @app.stub :load_translations, @fake_load_translations do
         @app = App.new(file)
-        assert_raises("File #{@path} not found.") do
+        assert_raises("File #{file} not found.") do
           @app.start
         end
       end
