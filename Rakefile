@@ -27,4 +27,4 @@ task :yardoc do
   end
 end
 
-task default: :test
+task default: [:test, :yardoc, :rubocop]
