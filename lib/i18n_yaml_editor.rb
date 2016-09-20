@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Translator
 module I18nYamlEditor
   class << self

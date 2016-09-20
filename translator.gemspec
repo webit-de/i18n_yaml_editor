@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Gem::Specification.new do |s|
   s.name     = 'translator'
   s.version  = '1.3.1'
@@ -19,6 +20,9 @@ Gem::Specification.new do |s|
     'lib/i18n_yaml_editor/core_ext.rb',
     'lib/i18n_yaml_editor/key.rb',
     'lib/i18n_yaml_editor/store.rb',
+    'lib/i18n_yaml_editor/filter.rb',
+    'lib/i18n_yaml_editor/update.rb',
+    'lib/i18n_yaml_editor/cast.rb',
     'lib/i18n_yaml_editor/transformation.rb',
     'lib/i18n_yaml_editor/translation.rb',
     'lib/i18n_yaml_editor/web.rb',
@@ -42,4 +46,18 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'pry-byebug'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'cane'
+  s.add_development_dependency 'flay'
+  s.add_development_dependency 'flog'
+  s.add_development_dependency 'inch'
+  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'guard'
+  s.add_development_dependency 'guard-rubocop'
+  s.add_development_dependency 'guard-minitest'
+  s.add_development_dependency 'minitest-line'
+  s.add_development_dependency 'yard'
+  s.add_development_dependency 'redcarpet'
+  s.add_development_dependency 'github-markup'
+  s.add_development_dependency 'awesome_print'
 end

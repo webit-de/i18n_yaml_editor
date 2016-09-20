@@ -42,6 +42,9 @@ You need to understand a few things about Translator for it to make sense, mainl
 
 ## Development
 
-Run tests including coverage. This full test suite runs in less than 2s.
-
-        COVERALLS_RUN_LOCALLY=true bundle exec rake test
+### Getting started
+        $ git clone git@github.com:Sage/translator.git
+        $ cd translator
+        $ gem install bundler
+        $ bundle install
+        $ SIMPLE_COV=true bundle exec guard
