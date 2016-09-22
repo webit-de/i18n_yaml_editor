@@ -26,8 +26,9 @@ Gem::Specification.new do |s|
     'lib/i18n_yaml_editor/transformation.rb',
     'lib/i18n_yaml_editor/translation.rb',
     'lib/i18n_yaml_editor/web.rb',
-    'views/layout.erb',
     'views/categories.html.erb',
+    'views/debug.html.erb',
+    'views/layout.erb',
     'views/translations.html.erb'
   ]
   s.test_files = [
@@ -57,6 +58,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-minitest'
   s.add_development_dependency 'minitest-line'
   s.add_development_dependency 'minitest-reporters'
+  s.add_development_dependency 'rack-test'
   s.add_development_dependency 'yard'
   s.add_development_dependency 'redcarpet'
   s.add_development_dependency 'github-markup'
