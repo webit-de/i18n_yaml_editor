@@ -11,7 +11,10 @@ end
 
 require 'minitest/autorun'
 require 'minitest/hell'
+require 'minitest/reporters'
 require 'i18n_yaml_editor'
+
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(color: true)]
 
 module Minitest
   class Test
