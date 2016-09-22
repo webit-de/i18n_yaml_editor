@@ -5,8 +5,6 @@ require 'cuba'
 require 'cuba/render'
 require 'bigdecimal'
 
-require 'i18n_yaml_editor/app'
-
 module I18nYamlEditor
   # The frontend rendering engine
   class Web < Cuba

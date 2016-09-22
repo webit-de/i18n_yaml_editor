@@ -3,7 +3,6 @@ require 'psych'
 require 'yaml'
 require 'active_support/all'
 
-require 'i18n_yaml_editor'
 require 'i18n_yaml_editor/web'
 require 'i18n_yaml_editor/store'
 require 'i18n_yaml_editor/core_ext'
