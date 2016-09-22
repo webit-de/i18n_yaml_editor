@@ -14,7 +14,8 @@ module I18nYamlEditor
 
     settings[:render][:template_engine] = 'erb'
     settings[:render][:views] = File.expand_path(
-      File.join(File.dirname(__FILE__), '..', '..', 'views'))
+      File.join(File.dirname(__FILE__), '..', '..', 'views')
+    )
 
     use Rack::ShowExceptions
 

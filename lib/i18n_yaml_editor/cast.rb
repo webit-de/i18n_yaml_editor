@@ -6,7 +6,7 @@ module I18nYamlEditor
     def cast(klass, value)
       if klass < Numeric
         num = BigDecimal.new(value)
-        num.frac == 0 ? num.to_i : num.to_f
+        num.frac.zero? ? num.to_i : num.to_f
       elsif [TrueClass, FalseClass].include?(klass)
         value.casecmp('true').zero?
       elsif klass == Array

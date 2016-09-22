@@ -16,11 +16,11 @@ class TestStore < Minitest::Test
 
   def test_filter_keys_on_complete
     store = Store.new
-    store.add_translation Translation.new(
-      name: 'da.session.login', text: 'Log ind')
-    store.add_translation Translation.new(name: 'en.session.login')
-    store.add_translation Translation.new(
-      name: 'da.session.logout', text: 'Log ud')
+    [{ name: 'da.session.login', text: 'Log ind' },
+     { name: 'en.session.login' },
+     { name: 'da.session.logout', text: 'Log ud' }].each do |translation|
+      store.add_translation Translation.new(translation)
+    end
 
     result = store.filter_keys(complete: false)
 
