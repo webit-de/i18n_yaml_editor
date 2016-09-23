@@ -2,6 +2,7 @@
 require 'rake/testtask'
 require 'rubocop/rake_task'
 require 'coveralls/rake/task'
+require 'capture_io/capture_io'
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
@@ -28,50 +29,6 @@ task :yardoc do
     puts yard.each_line.to_a[0..-2]
     puts "\033[0;32m100.00% documented\033[0m\n\n\n"
   end
-end
-
-def capture_out
-  captured_stdout = Tempfile.new('out')
-
-  orig_stdout = $stdout.dup
-  $stdout.reopen captured_stdout
-
-  yield
-
-  $stdout.rewind
-
-  captured_stdout.read
-ensure
-  captured_stdout.unlink
-  $stdout.reopen orig_stdout
-end
-
-def capture_err
-  captured_stderr = Tempfile.new('err')
-
-  orig_stderr = $stderr.dup
-  $stderr.reopen captured_stderr
-
-  yield
-
-  $stderr.rewind
-
-  captured_stderr.read
-ensure
-  captured_stderr.unlink
-  $stderr.reopen orig_stderr
-end
-
-def capture_io
-  require 'tempfile'
-  err = nil
-  out = capture_out do
-    err = capture_err do
-      yield
-    end
-  end
-
-  [out, err]
 end
 
 task :coverage do
