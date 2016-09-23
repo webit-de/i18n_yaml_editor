@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 require 'tempfile'
 
+# captures arbitrary io
+def capture(io)
+  captured_io = Tempfile.new
+
+  orig_stdout = io.dup
+  io.reopen captured_io
+
+  yield
+
+  io.rewind
+
+  captured_io.read
+ensure
+  captured_io.unlink
+  io.reopen orig_stdout
+end
+
 # captures $stdout
 # @example
 #   out = capture_out do
@@ -11,19 +28,9 @@ require 'tempfile'
 #   end
 #   out # => "1\n3\n"
 def capture_out
-  captured_stdout = Tempfile.new('out')
-
-  orig_stdout = $stdout.dup
-  $stdout.reopen captured_stdout
-
-  yield
-
-  $stdout.rewind
-
-  captured_stdout.read
-ensure
-  captured_stdout.unlink
-  $stdout.reopen orig_stdout
+  capture($stdout) do
+    yield
+  end
 end
 
 # captures $stderr
@@ -36,19 +43,9 @@ end
 #   end
 #   err #=> "2\n4\n"
 def capture_err
-  captured_stderr = Tempfile.new('err')
-
-  orig_stderr = $stderr.dup
-  $stderr.reopen captured_stderr
-
-  yield
-
-  $stderr.rewind
-
-  captured_stderr.read
-ensure
-  captured_stderr.unlink
-  $stderr.reopen orig_stderr
+  capture($stderr) do
+    yield
+  end
 end
 
 # captures $stdout and $stderr

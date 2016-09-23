@@ -23,7 +23,7 @@ module RuboCop
       require 'rubocop'
 
       cli = CLI.new
-      puts '# Running RuboCop...' if verbose
+      puts "\033[1;33m# Running RuboCop...\033[0m" if verbose
       result = cli.run(options)
       failed = result.nonzero? && fail_on_error
       abort("\033[0;31mRuboCop failed!\033[0m\n") if failed
@@ -38,7 +38,7 @@ RuboCop::RakeTask.new(:rubocop)
 desc 'Generate documentation in doc/ and check documentation coverage'
 task :yardoc do
   require 'yard'
-  puts "\n# Running Yardoc..."
+  puts "\n\033[1;33m# Running Yardoc...\033[0m"
   yard = `yard stats --list-undoc --compact`
   if yard =~ /Undocumented Objects/
     puts yard
@@ -51,7 +51,7 @@ task :yardoc do
 end
 
 task :coverage do
-  puts '# Running Minitest...'
+  puts "\033[1;33m# Running Minitest...\033[0m"
   out, = capture_io do
     envvars = 'SIMPLE_COV=true' unless ENV['TRAVIS']
     puts `#{envvars} bundle exec rake test`
@@ -73,5 +73,5 @@ task :coverage do
 end
 
 task default: [:coverage, :yardoc, :rubocop] do
-  puts "\033[0;32mYAY! - All passed\033[0m\n\n"
+  puts "\033[0;32mYAY! - Translator test suite passed\033[0m\n\n"
 end
