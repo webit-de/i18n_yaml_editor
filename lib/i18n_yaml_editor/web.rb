@@ -5,8 +5,6 @@ require 'cuba'
 require 'cuba/render'
 require 'bigdecimal'
 
-require 'i18n_yaml_editor/app'
-
 module I18nYamlEditor
   # The frontend rendering engine
   class Web < Cuba
@@ -14,7 +12,8 @@ module I18nYamlEditor
 
     settings[:render][:template_engine] = 'erb'
     settings[:render][:views] = File.expand_path(
-      File.join(File.dirname(__FILE__), '..', '..', 'views'))
+      File.join(File.dirname(__FILE__), '..', '..', 'views')
+    )
 
     use Rack::ShowExceptions
 

@@ -25,13 +25,15 @@ module TestStoreData
     Translation.new(
       name: 'da.app_name',
       text: 'Oversætter',
-      file: '/tmp/da.yml')
+      file: '/tmp/da.yml'
+    )
   end
 
   def tmp_translation_0
     Translation.new(
       name: 'da.session.login',
       text: 'Log ind',
-      file: '/tmp/session.da.yml')
+      file: '/tmp/session.da.yml'
+    )
   end
 end

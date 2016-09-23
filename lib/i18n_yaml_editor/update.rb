@@ -24,11 +24,10 @@ module I18nYamlEditor
 
     def update_array(obj, name, text)
       klasses = obj.map(&:class).uniq!
-      if klasses.length < 2
-        translations[name].text = []
-        cast(Array, text).each do |item|
-          translations[name].text << cast(klasses[0], item)
-        end
+      return unless klasses.length < 2
+      translations[name].text = []
+      cast(Array, text).each do |item|
+        translations[name].text << cast(klasses[0], item)
       end
     end
 

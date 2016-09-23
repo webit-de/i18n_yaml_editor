@@ -115,14 +115,13 @@ class TestStore < Minitest::Test
 
   def test_to_yaml
     store = Store.new
-    store.add_translation Translation.new(
-      name: 'da.session.login', text: 'Log ind', file: '/tmp/session.da.yml')
-    store.add_translation Translation.new(
-      name: 'en.session.login', text: 'Sign in', file: '/tmp/session.en.yml')
-    store.add_translation Translation.new(
-      name: 'da.session.logout', text: 'Log ud', file: '/tmp/session.da.yml')
-    store.add_translation Translation.new(
-      name: 'da.app_name', text: 'Oversætter', file: '/tmp/da.yml')
+    [{ name: 'da.session.login', text: 'Log ind', file: '/tmp/session.da.yml' },
+     { name: 'en.session.login', text: 'Sign in', file: '/tmp/session.en.yml' },
+     { name: 'da.session.logout', text: 'Log ud', file: '/tmp/session.da.yml' },
+     { name: 'da.app_name', text: 'Oversætter',
+       file: '/tmp/da.yml' }].each do |translation|
+      store.add_translation Translation.new(translation)
+    end
 
     assert_equal @expected_yaml, store.to_yaml
   end
