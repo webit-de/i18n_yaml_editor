@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'set'
 
-module I18nYamlEditor
+module Translator
   # This is a key
   class Key
     attr_accessor :name, :translations

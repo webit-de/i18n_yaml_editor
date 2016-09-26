@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-require 'i18n_yaml_editor/cast'
+require 'translator/cast'
 
-module I18nYamlEditor
+module Translator
   # Provides update functioinality for Store
   module Update
     include Cast

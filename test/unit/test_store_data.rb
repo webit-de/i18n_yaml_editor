@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 require 'test_helper'
-require 'i18n_yaml_editor/store'
+require 'translator/store'
 
 module TestStoreData
   def self.included(_base)
-    include I18nYamlEditor
+    include Translator
   end
 
   def init_test_store_1
