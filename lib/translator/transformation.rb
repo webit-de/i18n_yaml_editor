@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module I18nYamlEditor
+module Translator
   # Raised when nesting of I18n keys to a Hash fails
   class TransformationError < StandardError; end
 

@@ -3,10 +3,10 @@ Gem::Specification.new do |s|
   s.name     = 'translator'
   s.version  = '1.3.1'
   s.date     = '2015-10-07'
-  s.summary  = 'I18n Yaml Editor'
+  s.summary  = 'Translator'
   s.email    = 'wolfgang.teuber@sage.com'
   s.homepage = 'http://github.com/Sage/translator'
-  s.description = 'I18n YAML Editor'
+  s.description = 'Translator'
   s.authors = ['Harry Vangberg', 'Wolfgang Teuber']
   s.executables << 'translator'
   s.files = [
@@ -14,18 +14,18 @@ Gem::Specification.new do |s|
     'Rakefile',
     'translator.gemspec',
     'bin/translator',
-    'lib/i18n_yaml_editor.rb',
-    'lib/i18n_yaml_editor/app.rb',
-    'lib/i18n_yaml_editor/category.rb',
-    'lib/i18n_yaml_editor/core_ext.rb',
-    'lib/i18n_yaml_editor/key.rb',
-    'lib/i18n_yaml_editor/store.rb',
-    'lib/i18n_yaml_editor/filter.rb',
-    'lib/i18n_yaml_editor/update.rb',
-    'lib/i18n_yaml_editor/cast.rb',
-    'lib/i18n_yaml_editor/transformation.rb',
-    'lib/i18n_yaml_editor/translation.rb',
-    'lib/i18n_yaml_editor/web.rb',
+    'lib/translator.rb',
+    'lib/translator/app.rb',
+    'lib/translator/category.rb',
+    'lib/translator/core_ext.rb',
+    'lib/translator/key.rb',
+    'lib/translator/store.rb',
+    'lib/translator/filter.rb',
+    'lib/translator/update.rb',
+    'lib/translator/cast.rb',
+    'lib/translator/transformation.rb',
+    'lib/translator/translation.rb',
+    'lib/translator/web.rb',
     'views/categories.html.erb',
     'views/debug.html.erb',
     'views/layout.erb',

@@ -2,14 +2,14 @@
 require 'set'
 require 'pathname'
 
-require 'i18n_yaml_editor/transformation'
-require 'i18n_yaml_editor/filter'
-require 'i18n_yaml_editor/update'
-require 'i18n_yaml_editor/category'
-require 'i18n_yaml_editor/key'
-require 'i18n_yaml_editor/translation'
+require 'translator/transformation'
+require 'translator/filter'
+require 'translator/update'
+require 'translator/category'
+require 'translator/key'
+require 'translator/translation'
 
-module I18nYamlEditor
+module Translator
   # Raised when translation entries have the same key
   class DuplicateTranslationError < StandardError; end
 

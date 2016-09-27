@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'test_helper'
 require 'unit/test_store_data'
-require 'i18n_yaml_editor/store'
+require 'translator/store'
 
 class TestStore < Minitest::Test
   include TestStoreData

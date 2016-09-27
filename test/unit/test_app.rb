@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'test_helper'
-require 'i18n_yaml_editor/app'
+require 'translator/app'
 
 class TestApp < Minitest::Test
   def test_save_translations

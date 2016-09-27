@@ -5,7 +5,7 @@ require 'cuba'
 require 'cuba/render'
 require 'bigdecimal'
 
-module I18nYamlEditor
+module Translator
   # The frontend rendering engine
   class Web < Cuba
     plugin Cuba::Render
@@ -19,7 +19,7 @@ module I18nYamlEditor
 
     # Reads global App instance
     def app
-      I18nYamlEditor.app
+      Translator.app
     end
 
     define do

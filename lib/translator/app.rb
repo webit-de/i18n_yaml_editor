@@ -3,11 +3,11 @@ require 'psych'
 require 'yaml'
 require 'active_support/all'
 
-require 'i18n_yaml_editor/web'
-require 'i18n_yaml_editor/store'
-require 'i18n_yaml_editor/core_ext'
+require 'translator/web'
+require 'translator/store'
+require 'translator/core_ext'
 
-module I18nYamlEditor
+module Translator
   # App provides Translator's top-level functionality:
   #   * Starting Translator
   #   * Loading Translation files
@@ -19,7 +19,7 @@ module I18nYamlEditor
       @path = File.expand_path(path)
       @port = port || 5050
       @store = Store.new
-      I18nYamlEditor.app = self
+      Translator.app = self
     end
 
     # Starts Translator server
@@ -31,7 +31,7 @@ module I18nYamlEditor
       $stdout.puts ' * Creating missing translations'
       store.create_missing_keys
 
-      $stdout.puts " * Starting web editor at port #{@port}"
+      $stdout.puts " * Starting Translator at port #{@port}"
       Rack::Server.start app: Web, Port: @port
     end
 

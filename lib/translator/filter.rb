@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module I18nYamlEditor
+module Translator
   # Transformation provides
   module Filter
     # Selects keys from this store according to the given filter options

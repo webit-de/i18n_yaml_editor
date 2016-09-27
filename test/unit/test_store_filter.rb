@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'test_helper'
-require 'i18n_yaml_editor/store'
+require 'translator/store'
 
 class TestStore < Minitest::Test
   def test_filter_keys_on_key

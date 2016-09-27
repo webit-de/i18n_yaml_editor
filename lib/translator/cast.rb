@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module I18nYamlEditor
+module Translator
   # Transformation provides
   module Cast
     # Converts a given value to a specific data type
