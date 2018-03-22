@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rake/testtask'
 require 'rubocop/rake_task'
 require 'coveralls/rake/task'
@@ -72,6 +73,6 @@ task :coverage do
   end
 end
 
-task default: [:coverage, :yardoc, :rubocop] do
+task default: %i[coverage yardoc rubocop] do
   puts "\033[0;32mYAY! - Translator test suite passed\033[0m\n\n"
 end

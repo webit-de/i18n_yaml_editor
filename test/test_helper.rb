@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 $VERBOSE = nil
 
 if ENV['SIMPLE_COV']

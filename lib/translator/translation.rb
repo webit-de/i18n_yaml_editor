@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Translator
   # A Translation holds information about its name, file and text
   class Translation

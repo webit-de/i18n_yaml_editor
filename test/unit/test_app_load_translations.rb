@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'translator/app'
 
@@ -6,11 +7,9 @@ class TestApp < Minitest::Test
   def test_load_translations_error
     Dir.mktmpdir do |dir|
       file = dir + '/does_not_exist.yml'
-      @app = App.new(file)
-      _stdout, stderr = capture_io do
-        @app.load_translations
+      assert_output('', "No valid translation file given\n") do
+        App.new(file).load_translations
       end
-      assert_match('No valid translation file given', stderr)
     end
   end
 

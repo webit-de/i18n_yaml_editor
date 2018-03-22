@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'guard/compat/plugin'
 
 # Yard is an inline guard that keeps the docs up-to-date and

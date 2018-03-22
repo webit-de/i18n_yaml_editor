@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Translator
   # Raised when nesting of I18n keys to a Hash fails
   class TransformationError < StandardError; end
@@ -45,7 +46,7 @@ module Translator
       hash.each do |key, value|
         begin
           nest_key result, key, value
-        rescue
+        rescue StandardError
           raise TransformationError,
                 "Failed to nest key: #{key.inspect} with #{value.inspect}"
         end
