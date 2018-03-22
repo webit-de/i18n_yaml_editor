@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'psych'
 require 'yaml'
 require 'active_support/all'
@@ -42,7 +43,9 @@ module Translator
               elsif File.file?(@path)
                 detect_list_or_file @path
               else
+                # rubocop:disable Style/StderrPuts
                 $stderr.puts 'No valid translation file given'
+                # rubocop:enable Style/StderrPuts
                 []
               end
       update_store files
@@ -91,7 +94,7 @@ module Translator
       !i18n_key.split('.').inject(i18n_hash) do |hash, k|
         begin
           hash[k]
-        rescue
+        rescue StandardError
           {}
         end
       end.nil?

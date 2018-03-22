@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name     = 'translator'
   s.version  = '1.3.1'
@@ -42,25 +44,27 @@ Gem::Specification.new do |s|
   ]
   s.add_dependency 'activesupport', '>= 4.0.2'
   s.add_dependency 'cuba', '>= 3'
-  s.add_dependency 'tilt', '>= 1.3'
   s.add_dependency 'psych', '>= 1.3.4'
+  s.add_dependency 'tilt', '>= 1.3'
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'pry-byebug'
-  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'cane'
+  s.add_development_dependency 'coveralls'
   s.add_development_dependency 'flay'
   s.add_development_dependency 'flog'
-  s.add_development_dependency 'inch'
-  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'github-markup'
   s.add_development_dependency 'guard'
-  s.add_development_dependency 'guard-rubocop'
   s.add_development_dependency 'guard-minitest'
+  s.add_development_dependency 'guard-rubocop'
+  s.add_development_dependency 'inch'
   s.add_development_dependency 'minitest-line'
   s.add_development_dependency 'minitest-reporters'
+  s.add_development_dependency 'pry-byebug'
+  s.add_development_dependency 'pry-doc'
   s.add_development_dependency 'rack-test'
-  s.add_development_dependency 'yard'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'redcarpet'
-  s.add_development_dependency 'github-markup'
-  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'yard'
 end
+# rubocop:enable Metrics/BlockLength

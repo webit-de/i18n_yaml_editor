@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'unit/test_store_data'
 require 'translator/store'
@@ -56,7 +57,7 @@ class TestStore < Minitest::Test
     store.add_translation(translation)
 
     assert_equal 1, store.categories.size
-    assert_equal %w(session.login), store.categories['session'].keys.map(&:name)
+    assert_equal %w[session.login], store.categories['session'].keys.map(&:name)
   end
 
   def test_add_translations_store_locales
@@ -66,7 +67,7 @@ class TestStore < Minitest::Test
     store.add_translation(translation)
 
     assert_equal 1, store.locales.size
-    assert_equal %w(da), store.locales.to_a
+    assert_equal %w[da], store.locales.to_a
   end
 
   def test_add_duplicate_translation

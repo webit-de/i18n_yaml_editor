@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'translator/store'
 
@@ -11,7 +12,7 @@ class TestStore < Minitest::Test
     result = store.filter_keys(key: /login/)
 
     assert_equal 1, result.size
-    assert_equal %w(session.login), result.keys
+    assert_equal %w[session.login], result.keys
   end
 
   def test_filter_keys_on_complete
@@ -25,7 +26,7 @@ class TestStore < Minitest::Test
     result = store.filter_keys(complete: false)
 
     assert_equal 1, result.size
-    assert_equal %w(session.login), result.keys
+    assert_equal %w[session.login], result.keys
   end
 
   def test_filter_keys_on_empty
@@ -37,7 +38,7 @@ class TestStore < Minitest::Test
     result = store.filter_keys(empty: true)
 
     assert_equal 1, result.size
-    assert_equal %w(session.logout), result.keys
+    assert_equal %w[session.logout], result.keys
   end
 
   def test_filter_keys_on_text
@@ -52,6 +53,6 @@ class TestStore < Minitest::Test
     result = store.filter_keys(text: /Log/)
 
     assert_equal 2, result.size
-    assert_equal %w(session.login session.logout).sort, result.keys.sort
+    assert_equal %w[session.login session.logout].sort, result.keys.sort
   end
 end

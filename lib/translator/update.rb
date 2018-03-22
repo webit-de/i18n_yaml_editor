@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'translator/cast'
 
 module Translator
@@ -14,7 +15,9 @@ module Translator
         if translations[name]
           update_translation(name, text, translations_in_store)
         else
+          # rubocop:disable Style/StderrPuts
           $stderr.puts 'Translation not found'
+          # rubocop:enable Style/StderrPuts
           next
         end
       end

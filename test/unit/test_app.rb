@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'translator/app'
 
@@ -18,10 +19,9 @@ class TestApp < Minitest::Test
       FileUtils.copy './example/session.en.yml', dir
       @app = App.new(dir)
       @app.load_translations
-      _stdout, stderr = capture_io do
+      assert_output('', "Translation not found\n") do
         @app.save_translations('does.not.exist' => 'foo')
       end
-      assert_match('Translation not found', stderr)
     end
   end
 

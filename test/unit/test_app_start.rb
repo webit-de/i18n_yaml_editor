@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'translator/app'
 
@@ -26,27 +27,25 @@ class TestApp < Minitest::Test
   end
 
   def test_start_load_translations
-    stdout, _stderr = capture_io do
+    assert_output(/ \* Loading translations from/, '') do
       @app.stub :load_translations, @fake_load_translations do
         assert_raises('called load_translations') { @app.start }
       end
     end
-    assert_match(/ \* Loading translations from/, stdout)
   end
 
   def test_store_create_missing_keys
-    stdout, _stderr = capture_io do
+    assert_output(/ \* Creating missing translations/, '') do
       @app.stub :load_translations, nil do
         @app.store.stub :create_missing_keys, @fake_store_create_missing_keys do
           assert_raises('called create_missing_keys') { @app.start }
         end
       end
     end
-    assert_match(/ \* Creating missing translations/, stdout)
   end
 
   def test_server_start
-    stdout, _stderr = capture_io do
+    assert_output(/ \* Starting Translator at port /, '') do
       @app.stub :load_translations, nil do
         @app.store.stub :create_missing_keys, nil do
           Rack::Server.stub :start, @fake_rack_server_start do
@@ -55,6 +54,5 @@ class TestApp < Minitest::Test
         end
       end
     end
-    assert_match(/ \* Starting Translator at port /, stdout)
   end
 end
