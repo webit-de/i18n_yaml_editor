@@ -3,6 +3,4 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'simplecov', require: false, group: :test
-
 gemspec
