@@ -49,7 +49,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'cane'
-  s.add_development_dependency 'coveralls'
   s.add_development_dependency 'flay'
   s.add_development_dependency 'flog'
   s.add_development_dependency 'github-markup'
@@ -65,6 +64,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'redcarpet'
   s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'yard'
 end
 # rubocop:enable Metrics/BlockLength

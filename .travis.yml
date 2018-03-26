@@ -3,3 +3,13 @@ rvm:
   - 2.3.1
 script:
   - bundle exec rake
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+      > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+after_script:
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+env:
+  global:
+    secure: z6tBV4nTd6WxSCWIAtsxNtKFMAHVwv+DbMYxyvn0edNXKbm/8U6n95ASEOkrr5keHD8kfPeFrVg++M4rnfh/BRMDWiF2cXXwSdC2Zb+zbOO8ubMvxxBAd2AJZm5X6t3Eyc4OK8SXirfJkyZ8JNMib9MimHz1QOOjG3lY1YpXRgP0Mr3VWwh9n/0kM//hwUw1eYRmLd6sHU2WXopJOusT30ZPKcVeRsvAmGhh0RWWT4zlvaURubV8tzoo8yjI4GkNeivZ5YMFJnD6oylsgCHr9dc6ZRIO1yzQRjuP6h421cBPbco5u0dB7Az4R+Gg28UQn5WB+bYgrJUDpjvZySydnYTCQcMHjF/Zu6TcSonsjQrCzP4AO0XQD7kAHIZDiiFkIyNjZYkY0qqQMlS9ef0H7MVMODzzUi0CtinCsNUnP7Qh6jVsd8HUy933JIAtJtVTPmiYFG9ZLE83GcVxPgenTzAJxaroQY3y6Q7dA4mk014M7X8A+4V3U2gK3r9pKmNIvZIoMud22B7Rr+ErN2+yPFlgDlpr/Gc5RIr4jbqx9VlqGXMcUGHedirrlChR8Arhu7Sk8B2Jqz6Dip1KRnGOKTETOkWc7hDHmC9esV73nsqWrk6bF7q345UCxEBJmtachJ/YWuH0RwUV1STuGfS7ZwaHdecViDwEPmHSja0qXbc=

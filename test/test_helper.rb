@@ -2,14 +2,9 @@
 
 $VERBOSE = nil
 
-if ENV['SIMPLE_COV']
-  require 'simplecov'
-  SimpleCov.start do
-    add_filter '/test'
-  end
-else
-  require 'coveralls'
-  Coveralls.wear!
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/test'
 end
 
 require 'minitest/autorun'
