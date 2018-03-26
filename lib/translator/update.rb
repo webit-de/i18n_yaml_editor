@@ -3,7 +3,7 @@
 require 'translator/cast'
 
 module Translator
-  # Provides update functioinality for Store
+  # Provides update functionality for Store
   module Update
     include Cast
 
