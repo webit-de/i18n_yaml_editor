@@ -3,18 +3,32 @@
 module Translator
   # Transformation provides
   module Cast
+    # Lists all supported types of conversions
+    TYPES = %i[numeric boolean array].freeze
+
+    # Contains a check method for each supported type
+    CHECK = {
+      numeric: ->(klass) { klass < Numeric },
+      boolean: ->(klass) { [TrueClass, FalseClass].include?(klass) },
+      array: ->(klass) { klass == Array }
+    }.freeze
+
+    # Contains a conversion method for each supported type
+    CONVERT = {
+      numeric: lambda do |value|
+                 num = BigDecimal(value)
+                 num.frac.zero? ? num.to_i : num.to_f
+               end,
+      boolean: ->(value) { value.casecmp('true').zero? },
+      array: ->(value) { value.split("\r\n") }
+    }.freeze
+
     # Converts a given value to a specific data type
     def cast(klass, value)
-      if klass < Numeric
-        num = BigDecimal(value)
-        num.frac.zero? ? num.to_i : num.to_f
-      elsif [TrueClass, FalseClass].include?(klass)
-        value.casecmp('true').zero?
-      elsif klass == Array
-        value.split("\r\n")
-      else # String, blank
-        value.to_s
+      TYPES.each do |type|
+        return CONVERT[type].call(value) if CHECK[type].call(klass)
       end
+      value.to_s # String, blank
     end
   end
 end
