@@ -2,7 +2,6 @@
 
 require 'rake/testtask'
 require 'rubocop/rake_task'
-require 'coveralls/rake/task'
 require 'capture_io/capture_io'
 
 Rake::TestTask.new do |t|
@@ -10,9 +9,6 @@ Rake::TestTask.new do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/test_*.rb'
 end
-
-desc 'Run Coveralls'
-Coveralls::RakeTask.new(:coverall)
 
 # Mixin
 module RuboCop
@@ -54,8 +50,7 @@ end
 task :coverage do
   puts "\033[1;33m# Running Minitest...\033[0m"
   out, = capture_io do
-    envvars = 'SIMPLE_COV=true' unless ENV['TRAVIS']
-    puts `#{envvars} bundle exec rake test`
+    puts `bundle exec rake test`
   end
   puts out
   err = /\d+ tests, \d+ assertions, (\d+) failures, (\d+) errors, \d+ skips/
