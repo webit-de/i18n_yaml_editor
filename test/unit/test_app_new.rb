@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/app'
+require 'i18n_yaml_editor/app'
 
 class TestApp < Minitest::Test
   def test_new_no_path_given
@@ -35,6 +35,6 @@ class TestApp < Minitest::Test
 
   def test_new_exposure
     app = App.new('')
-    assert_equal(Translator.app, app)
+    assert_equal(I18nYamlEditor.app, app)
   end
 end

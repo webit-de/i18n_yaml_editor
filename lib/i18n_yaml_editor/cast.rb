@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Translator
+module I18nYamlEditor
   # Transformation provides
   module Cast
     # Lists all supported types of conversions

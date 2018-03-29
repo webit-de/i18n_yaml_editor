@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/category'
+require 'i18n_yaml_editor/category'
 
 class TestCategory < Minitest::Test
   def setup

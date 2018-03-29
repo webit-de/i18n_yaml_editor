@@ -69,5 +69,5 @@ task :coverage do
 end
 
 task default: %i[coverage yardoc rubocop] do
-  puts "\033[0;32mYAY! - Translator test suite passed\033[0m\n\n"
+  puts "\033[0;32mYAY! - I18n Yaml Editor test suite passed\033[0m\n\n"
 end

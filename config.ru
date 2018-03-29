@@ -2,11 +2,11 @@
 
 $LOAD_PATH.unshift('lib')
 
-require 'translator/app'
-require 'translator/web'
+require 'i18n_yaml_editor/app'
+require 'i18n_yaml_editor/web'
 
-app = Translator::App.new('example')
+app = I18nYamlEditor::App.new('example')
 app.load_translations
 app.store.create_missing_keys
 
-run Translator::Web
+run I18nYamlEditor::Web

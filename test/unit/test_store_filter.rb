@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/store'
+require 'i18n_yaml_editor/store'
 
 class TestStore < Minitest::Test
   def test_filter_keys_on_key
@@ -48,7 +48,7 @@ class TestStore < Minitest::Test
     store.add_translation Translation.new(name: 'da.session.logout',
                                           text: 'Log ud')
     store.add_translation Translation.new(name: 'da.app.name',
-                                          text: 'Translator')
+                                          text: 'I18n Yaml Editor')
 
     result = store.filter_keys(text: /Log/)
 

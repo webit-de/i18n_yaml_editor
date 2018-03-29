@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/core_ext'
+require 'i18n_yaml_editor/core_ext'
 
 class TestHash < Minitest::Test
   def setup
