@@ -3,7 +3,7 @@
 # rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name     = 'i18n_yaml_editor'
-  s.version  = '1.3.1'
+  s.version  = '2.0.0'
   s.date     = '2015-10-07'
   s.summary  = 'I18n Yaml Editor'
   s.email    = 'wolfgang.teuber@sage.com'
