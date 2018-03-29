@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/transformation'
+require 'i18n_yaml_editor/transformation'
 
 class TestTransformation < Minitest::Test
   I18N_HASH = {

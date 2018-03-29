@@ -4,13 +4,13 @@ require 'psych'
 require 'yaml'
 require 'active_support/all'
 
-require 'translator/web'
-require 'translator/store'
-require 'translator/core_ext'
+require 'i18n_yaml_editor/web'
+require 'i18n_yaml_editor/store'
+require 'i18n_yaml_editor/core_ext'
 
-module Translator
-  # App provides Translator's top-level functionality:
-  #   * Starting Translator
+module I18nYamlEditor
+  # App provides I18n Yaml Editor's top-level functionality:
+  #   * Starting I18n Yaml Editor
   #   * Loading Translation files
   #   * Saving Translation files
   class App
@@ -20,10 +20,10 @@ module Translator
       @path = File.expand_path(path)
       @port = port || 5050
       @store = Store.new
-      Translator.app = self
+      I18nYamlEditor.app = self
     end
 
-    # Starts Translator server
+    # Starts I18n Yaml Editor server
     def start
       raise "File #{@path} not found." unless File.exist?(@path)
       $stdout.puts " * Loading translations from #{@path}"
@@ -32,7 +32,7 @@ module Translator
       $stdout.puts ' * Creating missing translations'
       store.create_missing_keys
 
-      $stdout.puts " * Starting Translator at port #{@port}"
+      $stdout.puts " * Starting I18n Yaml Editor at port #{@port}"
       Rack::Server.start app: Web, Port: @port
     end
 
@@ -66,8 +66,8 @@ module Translator
 
     private
 
-    # Enables Translator to deal with inputs that reference a file list or a
-    # single translation file
+    # Enables I18n Yaml Editor to deal with inputs that reference a file list or
+    # a single translation file
     def detect_list_or_file(path)
       file = YAML.load_file(path)
       file.is_a?(Hash) ? [path] : File.read(path).split

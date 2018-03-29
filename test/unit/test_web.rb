@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/web'
+require 'i18n_yaml_editor/web'
 
 # TODO: imprive tests in TestWeb
 class TestWeb < Minitest::Test
@@ -13,7 +13,7 @@ class TestWeb < Minitest::Test
 
     app.load_translations
     app.store.create_missing_keys
-    Translator.app = app
+    I18nYamlEditor.app = app
   end
 
   def app

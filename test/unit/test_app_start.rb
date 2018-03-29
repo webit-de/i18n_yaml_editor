@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'translator/app'
+require 'i18n_yaml_editor/app'
 
 class TestApp < Minitest::Test
   def setup
@@ -9,7 +9,7 @@ class TestApp < Minitest::Test
     @fake_load_translations = -> { raise 'called load_translations' }
     @fake_store_create_missing_keys = -> { raise 'called create_missing_keys' }
     @fake_rack_server_start = lambda do |options|
-      assert_equal({ app: Translator::Web, Port: 5050 }, options)
+      assert_equal({ app: I18nYamlEditor::Web, Port: 5050 }, options)
       raise 'called rack_server_start'
     end
   end
@@ -45,7 +45,7 @@ class TestApp < Minitest::Test
   end
 
   def test_server_start
-    assert_output(/ \* Starting Translator at port /, '') do
+    assert_output(/ \* Starting I18n Yaml Editor at port /, '') do
       @app.stub :load_translations, nil do
         @app.store.stub :create_missing_keys, nil do
           Rack::Server.stub :start, @fake_rack_server_start do

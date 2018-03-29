@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'i18n_yaml_editor'
+
+i18n_yaml_editor = I18nYamlEditor::App.new(*ARGV)
+i18n_yaml_editor.start

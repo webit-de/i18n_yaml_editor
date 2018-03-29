@@ -2,32 +2,32 @@
 
 # rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
-  s.name     = 'translator'
+  s.name     = 'i18n_yaml_editor'
   s.version  = '1.3.1'
   s.date     = '2015-10-07'
-  s.summary  = 'Translator'
+  s.summary  = 'I18n Yaml Editor'
   s.email    = 'wolfgang.teuber@sage.com'
-  s.homepage = 'http://github.com/Sage/translator'
-  s.description = 'Translator'
+  s.homepage = 'http://github.com/Sage/i18n_yaml_editor'
+  s.description = 'I18n Yaml Editor'
   s.authors = ['Harry Vangberg', 'Wolfgang Teuber']
-  s.executables << 'translator'
+  s.executables << 'i18n_yaml_editor'
   s.files = [
     'README.md',
     'Rakefile',
-    'translator.gemspec',
-    'bin/translator',
-    'lib/translator.rb',
-    'lib/translator/app.rb',
-    'lib/translator/category.rb',
-    'lib/translator/core_ext.rb',
-    'lib/translator/key.rb',
-    'lib/translator/store.rb',
-    'lib/translator/filter.rb',
-    'lib/translator/update.rb',
-    'lib/translator/cast.rb',
-    'lib/translator/transformation.rb',
-    'lib/translator/translation.rb',
-    'lib/translator/web.rb',
+    'i18n_yaml_editor.gemspec',
+    'bin/i18n_yaml_editor',
+    'lib/i18n_yaml_editor.rb',
+    'lib/i18n_yaml_editor/app.rb',
+    'lib/i18n_yaml_editor/category.rb',
+    'lib/i18n_yaml_editor/core_ext.rb',
+    'lib/i18n_yaml_editor/key.rb',
+    'lib/i18n_yaml_editor/store.rb',
+    'lib/i18n_yaml_editor/filter.rb',
+    'lib/i18n_yaml_editor/update.rb',
+    'lib/i18n_yaml_editor/cast.rb',
+    'lib/i18n_yaml_editor/transformation.rb',
+    'lib/i18n_yaml_editor/translation.rb',
+    'lib/i18n_yaml_editor/web.rb',
     'views/categories.html.erb',
     'views/debug.html.erb',
     'views/layout.erb',

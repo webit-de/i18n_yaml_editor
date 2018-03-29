@@ -16,4 +16,4 @@
 * Only submit changed input fields
 
 ## v1.1.1
-* Initial Translator release based on [IYE](https://github.com/firmafon/iye)
+* Initial I18n Yaml Editor release based on [IYE](https://github.com/firmafon/iye)

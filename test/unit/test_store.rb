@@ -2,7 +2,7 @@
 
 require 'test_helper'
 require 'unit/test_store_data'
-require 'translator/store'
+require 'i18n_yaml_editor/store'
 
 class TestStore < Minitest::Test
   include TestStoreData
