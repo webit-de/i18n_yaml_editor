@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
     'lib/i18n_yaml_editor.rb',
     'lib/i18n_yaml_editor/app.rb',
     'lib/i18n_yaml_editor/category.rb',
-    'lib/i18n_yaml_editor/core_ext.rb',
     'lib/i18n_yaml_editor/key.rb',
     'lib/i18n_yaml_editor/store.rb',
     'lib/i18n_yaml_editor/filter.rb',
@@ -46,6 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cuba', '>= 3'
   s.add_dependency 'psych', '>= 1.3.4'
   s.add_dependency 'tilt', '>= 1.3'
+  s.add_dependency 'yaml_normalizer', '>= 0'
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'cane'

@@ -1,6 +1,9 @@
+## v2.1.0
+* Replace Hash core extension with YamlNormalizer functionality
+
 ## v2.0.0
-* Add favicon "globe"
 * Rename the gem to `i18n_yaml_editor`
+* Add favicon "globe"
 
 ## v1.3.1
 * Only save files that contain the changed i18n key

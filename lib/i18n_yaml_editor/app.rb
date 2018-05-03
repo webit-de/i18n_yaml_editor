@@ -6,7 +6,6 @@ require 'active_support/all'
 
 require 'i18n_yaml_editor/web'
 require 'i18n_yaml_editor/store'
-require 'i18n_yaml_editor/core_ext'
 
 module I18nYamlEditor
   # App provides I18n Yaml Editor's top-level functionality:
@@ -58,8 +57,9 @@ module I18nYamlEditor
       store.update(translations)
       changes = files(translations: translations)
       changes.each do |file, yaml|
+        yaml.extend(YamlNormalizer::Ext::SortByKey)
         File.open(file, 'w', encoding: 'utf-8') do |f|
-          f.puts normalize(yaml)
+          f.puts yaml.sort_by_key.to_yaml
         end
       end
     end
@@ -98,28 +98,6 @@ module I18nYamlEditor
           {}
         end
       end.nil?
-    end
-
-    def normalize(yaml)
-      i18n_yaml = yaml.with_indifferent_access.to_hash.to_yaml
-      i18n_yaml_lines = i18n_yaml.split(/\n/).reject { |e| e == '' }[1..-1]
-      normalize_empty_lines(i18n_yaml_lines) * "\n"
-    end
-
-    def normalize_empty_lines(i18n_yaml_lines)
-      yaml_ary = []
-      i18n_yaml_lines.each_with_index do |line, idx|
-        yaml_ary << line
-        yaml_ary << '' if add_empty_line?(i18n_yaml_lines, line, idx)
-      end
-      yaml_ary
-    end
-
-    def add_empty_line?(process, line, idx)
-      return if process[idx + 1].nil?
-      this_line_spcs = line[/\A\s*/].length
-      next_line_spcs = process[idx + 1][/\A\s*/].length
-      this_line_spcs - next_line_spcs > 2
     end
   end
 end
