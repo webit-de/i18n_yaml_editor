@@ -1,3 +1,6 @@
+## Unreleased
+* Add gem version badge to README
+
 ## v2.1.0
 * Make bin/i18n_yaml_editor require appropriate lib
 * Replace module Transformation with YamlNormalizer functionality
