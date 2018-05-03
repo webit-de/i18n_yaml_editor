@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
     'lib/i18n_yaml_editor/filter.rb',
     'lib/i18n_yaml_editor/update.rb',
     'lib/i18n_yaml_editor/cast.rb',
-    'lib/i18n_yaml_editor/transformation.rb',
     'lib/i18n_yaml_editor/translation.rb',
     'lib/i18n_yaml_editor/web.rb',
     'views/categories.html.erb',
@@ -38,7 +37,6 @@ Gem::Specification.new do |s|
     'test/unit/test_category.rb',
     'test/unit/test_key.rb',
     'test/unit/test_store.rb',
-    'test/unit/test_transformation.rb',
     'test/unit/test_translation.rb'
   ]
   s.add_dependency 'activesupport', '>= 4.0.2'

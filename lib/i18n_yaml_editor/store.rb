@@ -2,8 +2,8 @@
 
 require 'set'
 require 'pathname'
+require 'yaml_normalizer'
 
-require 'i18n_yaml_editor/transformation'
 require 'i18n_yaml_editor/filter'
 require 'i18n_yaml_editor/update'
 require 'i18n_yaml_editor/category'
@@ -16,7 +16,6 @@ module I18nYamlEditor
 
   # Store keeps all i18n data
   class Store
-    include Transformation
     include Filter
     include Update
 
@@ -74,7 +73,7 @@ module I18nYamlEditor
 
     # Adds a translation for every entry in a given yaml hash
     def from_yaml(yaml, file = nil)
-      translations = flatten_hash(yaml)
+      translations = yaml.extend(YamlNormalizer::Ext::Namespaced).namespaced
       translations.each do |name, text|
         translation = Translation.new(name: name, text: text, file: file)
         add_translation(translation)
@@ -90,7 +89,7 @@ module I18nYamlEditor
         translations.each do |translation|
           file_result[translation.name] = translation.text
         end
-        result[file] = nest_hash(file_result)
+        result[file] = file_result.extend(YamlNormalizer::Ext::Nested).nested
       end
       result
     end

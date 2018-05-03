@@ -1,4 +1,5 @@
 ## v2.1.0
+* Replace module Transformation with YamlNormalizer functionality
 * Replace Hash core extension with YamlNormalizer functionality
 
 ## v2.0.0
