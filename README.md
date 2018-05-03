@@ -1,6 +1,12 @@
 # I18n Yaml Editor
 
-[![Build Status](https://travis-ci.org/Sage/i18n_yaml_editor.svg?branch=master)](https://travis-ci.org/Sage/i18n_yaml_editor) [![Maintainability](https://api.codeclimate.com/v1/badges/f71fb2039dd7d50eb90d/maintainability)](https://codeclimate.com/github/Sage/i18n_yaml_editor/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f71fb2039dd7d50eb90d/test_coverage)](https://codeclimate.com/github/Sage/i18n_yaml_editor/test_coverage) [![Documentation Status](http://inch-ci.org/github/Sage/i18n_yaml_editor.svg?branch=master)](http://inch-ci.org/github/Sage/i18n_yaml_editor) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Sage/i18n_yaml_editor/blob/master/LICENSE) [![Dependency Status](https://gemnasium.com/badges/github.com/Sage/i18n_yaml_editor.svg)](https://gemnasium.com/github.com/Sage/i18n_yaml_editor)
+[![Build Status](https://travis-ci.org/Sage/i18n_yaml_editor.svg?branch=master)](https://travis-ci.org/Sage/i18n_yaml_editor)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f71fb2039dd7d50eb90d/maintainability)](https://codeclimate.com/github/Sage/i18n_yaml_editor/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f71fb2039dd7d50eb90d/test_coverage)](https://codeclimate.com/github/Sage/i18n_yaml_editor/test_coverage)
+[![Documentation Status](http://inch-ci.org/github/Sage/i18n_yaml_editor.svg?branch=master)](http://inch-ci.org/github/Sage/i18n_yaml_editor)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Sage/i18n_yaml_editor/blob/master/LICENSE)
+[![Dependency Status](https://gemnasium.com/badges/github.com/Sage/i18n_yaml_editor.svg)](https://gemnasium.com/github.com/Sage/i18n_yaml_editor)
+[![Gem Version](https://badge.fury.io/rb/i18n_yaml_editor.svg)](https://badge.fury.io/rb/i18n_yaml_editor)
 
 I18n Yaml Editor is based on [IYE](https://github.com/firmafon/iye).
 I18n Yaml Editor makes it easy to translate your Rails I18N files and keep them up to date.
@@ -25,10 +31,7 @@ You need to understand a few things about I18n Yaml Editor for it to make sense,
 
 1. Install I18n Yaml Editor:
 
-        $ git clone git@github.com:Sage/i18n_yaml_editor.git
-        $ cd i18n_yaml_editor
-        $ gem build i18n_yaml_editor.gemspec
-        $ gem install i18n_yaml_editor-1.3.1.gem
+        $ gem install i18n_yaml_editor
 
 2. The `i18n_yaml_editor` executable is now available, use it wherever you want.
 
