@@ -31,10 +31,7 @@ You need to understand a few things about I18n Yaml Editor for it to make sense,
 
 1. Install I18n Yaml Editor:
 
-        $ git clone git@github.com:Sage/i18n_yaml_editor.git
-        $ cd i18n_yaml_editor
-        $ gem build i18n_yaml_editor.gemspec
-        $ gem install i18n_yaml_editor-1.3.1.gem
+        $ gem install i18n_yaml_editor
 
 2. The `i18n_yaml_editor` executable is now available, use it wherever you want.
 

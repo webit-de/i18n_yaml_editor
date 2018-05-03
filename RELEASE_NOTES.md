@@ -1,4 +1,5 @@
 ## Unreleased
+* Update installation guide in README
 * Add gem version badge to README
 
 ## v2.1.0
