@@ -5,7 +5,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f71fb2039dd7d50eb90d/test_coverage)](https://codeclimate.com/github/Sage/i18n_yaml_editor/test_coverage)
 [![Documentation Status](http://inch-ci.org/github/Sage/i18n_yaml_editor.svg?branch=master)](http://inch-ci.org/github/Sage/i18n_yaml_editor)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Sage/i18n_yaml_editor/blob/master/LICENSE)
-[![Dependency Status](https://gemnasium.com/badges/github.com/Sage/i18n_yaml_editor.svg)](https://gemnasium.com/github.com/Sage/i18n_yaml_editor)
 [![Gem Version](https://badge.fury.io/rb/i18n_yaml_editor.svg)](https://badge.fury.io/rb/i18n_yaml_editor)
 
 I18n Yaml Editor is based on [IYE](https://github.com/firmafon/iye).
