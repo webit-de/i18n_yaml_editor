@@ -25,6 +25,7 @@ module I18nYamlEditor
     # Starts I18n Yaml Editor server
     def start
       raise "File #{@path} not found." unless File.exist?(@path)
+
       $stdout.puts " * Loading translations from #{@path}"
       load_translations
 
