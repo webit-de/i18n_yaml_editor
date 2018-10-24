@@ -103,6 +103,7 @@ module I18nYamlEditor
     def check_duplication!(translation)
       existing = translations[translation.name]
       return unless existing
+
       error_message = error_message(translation, existing)
       raise DuplicateTranslationError, error_message
     end

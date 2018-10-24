@@ -28,6 +28,7 @@ module I18nYamlEditor
     def update_array(obj, name, text)
       klasses = obj.map(&:class).uniq!
       return unless klasses.length < 2
+
       translations[name].text = []
       cast(Array, text).each do |item|
         translations[name].text << cast(klasses[0], item)
