@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name     = 'i18n_yaml_editor'
   s.version  = '2.1.0'
@@ -71,4 +70,3 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'yard'
 end
-# rubocop:enable Metrics/BlockLength
