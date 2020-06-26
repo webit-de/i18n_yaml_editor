@@ -29,7 +29,7 @@
                needs_text_area = (data_type == String && translation_texts.any? { |t| t.is_a?(String) && t.include?("\n") })
             %>
             <%
-               key.translations.sort_by(&:locale).each do |translation|
+               key.translations.sort_by { |t| ENV['LOCALE_ORDER']&.split(',')&.index(t.locale) || t.locale.ord }.each do |translation|
                  translation.text = [] if data_type == Array && translation.text.blank?
                  klasses = translation.text.map(&:class).uniq if data_type == Array
             %>
