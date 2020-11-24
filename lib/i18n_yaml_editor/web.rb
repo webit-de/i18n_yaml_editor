@@ -29,6 +29,7 @@ module I18nYamlEditor
           opts[:text] = /#{filters["text"]}/i unless filters['text'].to_s.empty?
           opts[:complete] = false if filters['incomplete'] == 'on'
           opts[:empty] = true if filters['empty'] == 'on'
+          opts[:varinconsistent] = true if filters['varinconsistent'] == 'on'
 
           keys = app.store.filter_keys(opts)
 

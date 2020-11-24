@@ -17,6 +17,7 @@ module I18nYamlEditor
       list << complete_filter(options) if options.key?(:complete)
       list << empty_filter(options) if options.key?(:empty)
       list << text_filter(options) if options.key?(:text)
+      list << varinconsistent_filter(options) if options.key?(:varinconsistent)
       list
     end
 
@@ -34,6 +35,10 @@ module I18nYamlEditor
 
     def text_filter(options)
       ->(k) { k.translations.any? { |t| t.text =~ options[:text] } }
+    end
+
+    def varinconsistent_filter(options)
+      ->(k) { k.varinconsistent? }
     end
   end
 end
