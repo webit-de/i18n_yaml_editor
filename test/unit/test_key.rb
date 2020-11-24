@@ -43,4 +43,15 @@ class TestKey < Minitest::Test
 
     assert key.empty?
   end
+
+  def test_varinconsistent
+    key = Key.new(name: 'session.login')
+    key.add_translation Translation.new(name: 'en.session.login')
+    key.add_translation Translation.new(name: 'da.session.login',
+                                        text: 'Log ind')
+    assert_equal false, key.varinconsistent?
+    key.add_translation Translation.new(name: 'de.session.login',
+                                        text: 'Log ind %{user}')
+    assert_equal true, key.varinconsistent?
+  end
 end

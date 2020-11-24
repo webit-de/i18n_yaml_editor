@@ -153,6 +153,10 @@
           <input name="filters[empty]" type="checkbox" <%= "checked=checked" if filters["empty"] == "on" %> />
           Empty
         </label>
+        <label>
+          <input name="filters[varinconsistent]" type="checkbox" <%= "checked=checked" if filters["varinconsistent"] == "on" %> />
+          Variables inconsistent
+        </label>
 
         <input type="submit" value="Filter" />
       </form>

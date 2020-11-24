@@ -29,5 +29,12 @@ module I18nYamlEditor
     def empty?
       translations.all? { |t| t.text.to_s =~ /\A\s*\z/ }
     end
+
+    def varinconsistent?
+      translations.map do |t|
+        text = t.text.to_s
+        text.scan(/%{([^}]*)}/).flatten.sort unless text.empty? || text.start_with?('[') && text.end_with?(']')
+      end.compact.uniq.size > 1
+    end
   end
 end

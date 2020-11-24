@@ -3,7 +3,8 @@
   total: <span class=""><%= keys.length %></span>,
   <span class="done">done: <%= keys.count{|_,key| key.complete? && !key.empty?} %></span>,
   <span class="incomplete">incomplete: <%= keys.count{|_,key| !key.complete?} %></span>,
-  <span class="empty">empty: <%= keys.count{|_,key| key.empty?} %></span>}
+  <span class="empty">empty: <%= keys.count{|_,key| key.empty?} %></span>,
+  <span class="inconsistent">inconsistent: <%= keys.count{|_,key| key.varinconsistent?} %></span>}
 </div>
 
 <form id="updateform" action="/update" method="post">
