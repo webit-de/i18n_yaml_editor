@@ -30,10 +30,20 @@ module I18nYamlEditor
           opts[:complete] = false if filters['incomplete'] == 'on'
           opts[:empty] = true if filters['empty'] == 'on'
           opts[:varinconsistent] = true if filters['varinconsistent'] == 'on'
+          languages = {}
+          app.store.locales.each do |key|
+            languages[key] = filters[key] == 'on'
+          end
+          # if no language filter is used all languages are shown
+          if languages.values.none?
+            languages.each_key do |language|
+              languages[language] = true
+            end
+          end
 
           keys = app.store.filter_keys(opts)
 
-          res.write view('translations.html', keys: keys, filters: filters)
+          res.write view('translations.html', keys: keys, filters: filters, languages: languages)
         end
 
         on default do
