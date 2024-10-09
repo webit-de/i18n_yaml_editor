@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'psych', '>= 1.3.4'
   s.add_dependency 'tilt', '>= 1.3'
   s.add_dependency 'yaml_normalizer', '>= 1.2'
+  s.add_dependency 'rackup', '~> 2.1'
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'cane'

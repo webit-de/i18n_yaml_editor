@@ -3,6 +3,7 @@
 require 'psych'
 require 'yaml'
 require 'active_support/all'
+require 'rackup'
 
 require 'i18n_yaml_editor/web'
 require 'i18n_yaml_editor/store'
@@ -33,7 +34,7 @@ module I18nYamlEditor
       store.create_missing_keys
 
       $stdout.puts " * Starting I18n Yaml Editor at port #{@port}"
-      Rack::Server.start app: Web, Port: @port
+      Rackup::Server.start app: Web, Port: @port
     end
 
     # Loads translations from a given path
