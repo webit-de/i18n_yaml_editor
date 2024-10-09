@@ -25,8 +25,8 @@ module I18nYamlEditor
       on get, root do
         on param('filters') do |filters|
           opts = {}
-          opts[:key] = /#{filters["key"]}/ unless filters['key'].to_s.empty?
-          opts[:text] = /#{filters["text"]}/i unless filters['text'].to_s.empty?
+          opts[:key] = /#{filters['key']}/ unless filters['key'].to_s.empty?
+          opts[:text] = /#{filters['text']}/i unless filters['text'].to_s.empty?
           opts[:complete] = false if filters['incomplete'] == 'on'
           opts[:empty] = true if filters['empty'] == 'on'
           opts[:varinconsistent] = true if filters['varinconsistent'] == 'on'
@@ -53,10 +53,10 @@ module I18nYamlEditor
       end
 
       on post, 'update' do
-        translations = req['translations']
+        translations = req.params['translations']
         app.save_translations(translations) if translations
 
-        url = Rack::Utils.build_nested_query(filters: req['filters'])
+        url = Rack::Utils.build_nested_query({ filters: req.params['filters'] })
         res.redirect "/?#{url}"
       end
 
