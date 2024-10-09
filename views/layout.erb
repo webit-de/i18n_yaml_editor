@@ -8,7 +8,7 @@
         font-family: sans-serif;
         font-size: 0.7em;
         margin: 0;
-        margin-top: 60px;
+        margin-top: 120px;
       }
 
       /* HEADER */
@@ -133,35 +133,52 @@
   <body>
     <div class="header">
       <h1>I18n Yaml Editor</h1>
+      <div>
+        <form action="/" method="get">
+          <label>
+            Key:
+            <input name="filters[key]" type="text" value="<%= filters["key"] %>" />
+          </label>
 
-      <form action="/" method="get">
-        <label>
-          Key:
-          <input name="filters[key]" type="text" value="<%= filters["key"] %>" />
-        </label>
+          <label>
+            Text:
+            <input name="filters[text]" type="text" value="<%= filters["text"] %>" />
+          </label>
 
-        <label>
-          Text:
-          <input name="filters[text]" type="text" value="<%= filters["text"] %>" />
-        </label>
+          <label>
+            <input name="filters[incomplete]" type="checkbox" <%= "checked=checked" if filters["incomplete"] == "on" %> />
+            Incomplete
+          </label>
+          <label>
+            <input name="filters[empty]" type="checkbox" <%= "checked=checked" if filters["empty"] == "on" %> />
+            Empty
+          </label>
+          <label>
+            <input name="filters[varinconsistent]" type="checkbox" <%= "checked=checked" if filters["varinconsistent"] == "on" %> />
+            Variables inconsistent
+          </label>
+          <br>
+          <label>
+            Language:
+          </label>
+          <% app.store.locales.sort_by { |locale| ENV['LOCALE_ORDER']&.split(',')&.index(locale) || locale.ord }.each do |language| %>
+            <label>
+              <input name="filters[<%= language %>]" type="checkbox" <%= "checked=checked" if filters[language] == "on" %> />
+              <%= language %>
+            </label>
+          <% end %>
 
-        <label>
-          <input name="filters[incomplete]" type="checkbox" <%= "checked=checked" if filters["incomplete"] == "on" %> />
-          Incomplete
-        </label>
-        <label>
-          <input name="filters[empty]" type="checkbox" <%= "checked=checked" if filters["empty"] == "on" %> />
-          Empty
-        </label>
+          <input type="submit" value="Filter" />
+        </form>
 
-        <input type="submit" value="Filter" />
-      </form>
+        <form action="/" method="get">
+            <input type="submit" value="Clear" />
+        </form>
+      </div>
 
-      <form action="/" method="get">
-        <input type="submit" value="Clear" />
-      </form>
-
-      <div id="save-on-top-container" class="pull-right"></div>
+      <div>
+        <div id="save-on-top-container" class="pull-right"></div>
+      </div>
     </div>
 
     <div class="content">

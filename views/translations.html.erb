@@ -3,7 +3,8 @@
   total: <span class=""><%= keys.length %></span>,
   <span class="done">done: <%= keys.count{|_,key| key.complete? && !key.empty?} %></span>,
   <span class="incomplete">incomplete: <%= keys.count{|_,key| !key.complete?} %></span>,
-  <span class="empty">empty: <%= keys.count{|_,key| key.empty?} %></span>}
+  <span class="empty">empty: <%= keys.count{|_,key| key.empty?} %></span>,
+  <span class="inconsistent">inconsistent: <%= keys.count{|_,key| key.varinconsistent?} %></span>}
 </div>
 
 <form id="updateform" action="/update" method="post">
@@ -29,7 +30,10 @@
                needs_text_area = (data_type == String && translation_texts.any? { |t| t.is_a?(String) && t.include?("\n") })
             %>
             <%
-               key.translations.sort_by(&:locale).each do |translation|
+               key.translations
+                .sort_by { |t| ENV['LOCALE_ORDER']&.split(',')&.index(t.locale) || t.locale.ord }
+                .select { |t| languages[t.locale] }
+                .each do |translation|
                  translation.text = [] if data_type == Array && translation.text.blank?
                  klasses = translation.text.map(&:class).uniq if data_type == Array
             %>
