@@ -7,6 +7,7 @@ SimpleCov.start do
   add_filter '/test'
 end
 
+require 'pry'
 require 'minitest/autorun'
 require 'minitest/hell'
 require 'minitest/reporters'

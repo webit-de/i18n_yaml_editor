@@ -48,7 +48,7 @@ class TestApp < Minitest::Test
     assert_output(/ \* Starting I18n Yaml Editor at port /, '') do
       @app.stub :load_translations, nil do
         @app.store.stub :create_missing_keys, nil do
-          Rack::Server.stub :start, @fake_rack_server_start do
+          Rackup::Server.stub :start, @fake_rack_server_start do
             assert_raises('called rack_server_start') { @app.start }
           end
         end
